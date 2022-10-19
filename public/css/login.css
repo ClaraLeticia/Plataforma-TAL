@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --branco: #fff;
+    --cinza: #aaa;
+    --preto: #000;
+    --verde-claro: #0a0;
+    --verde-escuro: #080;
+}
+body{
+    /*
+    background: url('https://st2.depositphotos.com/2013817/5605/v/600/depositphotos_56051269-stock-illustration-doodle-sketch-watches.jpg');
+    */
+    background-color: #ddd;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.card{
+    background-color: var(--branco);
+    border-radius: 5%;
+    padding: 40px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 0 10px var(--preto);
+}
+h1{
+    text-align: center;
+    margin-bottom: 60px;
+}
+.input{
+    position: relative;
+}
+.input input{
+    width: 100%;
+    padding: 10px 5px;
+    outline: none;
+    font-size: 1em;
+    border: 0;
+    border-bottom: 1px var(--cinza) solid;
+}
+.border-input{
+    display: block;
+    width: 0%;
+    height: 1px;
+    background-color: var(--verde-claro);
+    margin-bottom: 40px;
+    transition: all .4s ease-in-out;
+}
+.input input:focus ~ .border-input,
+.input input:valid ~ .border-input{
+    width: 100%;
+}
+.input label{
+    color: var(--cinza);
+    position: absolute;
+    top: 10px;
+    left: 0;
+    transition: all .4s ease;
+    pointer-events: none;
+}
+.input input:focus ~ label,
+.input input:valid ~ label{
+    transform: translateY(-25px)scale(0.9);
+    color: var(--verde-claro);
+}
+.btn-entrar{
+    padding: 10px 40px;
+    background-color: var(--verde-escuro);
+    border-style: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    transition: .2s;
+    color: var(--branco);
+}
+.btn-entrar:hover{
+    background-color: var(--verde-claro);
+}
+.link{
+    color: var(--verde-escuro);
+    text-decoration: none;
+}
+.link:hover{
+    color: var(--verde-claro);
+    text-decoration: underline;
+}
+#margin-top{
+    margin-top: 5px;
+}
