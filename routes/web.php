@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,22 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('bemvindo');
+    return view('home');
 });
 
-Route::get('/horarios', function () {
-    return view('horarios');
+Route::get('/recado', function () {
+    return view('recado');
 });
 
-Route::get('/login', function () {
-    return view('login');
+Route::get('/perfiltutor', function () {
+    return view('perfil-tutor');
 });
 
-Route::get('/cadastro', function () {
-    return view('cadastro');
+Route::get('/perfiletep', function () {
+    return view('perfil-etep');
 });
 
-Route::get('/documento', function () {
-    return view('documento');
+Route::get('/cadastrotutor', function () {
+    return view('cadastro-tutor');
 });
+
+Route::get('/login',[LoginController::class,'login']);
+

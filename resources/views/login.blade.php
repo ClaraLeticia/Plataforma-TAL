@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma TAL</title>
+    <title>TAL Horários</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
@@ -22,9 +22,8 @@
                     <span class="border-input"></span>
                     <label for="senha">Senha</label>
                 </div>
-                <input class="btn-entrar" type="submit" value="Entrar">
-                <div><a class="link" href="">Esqueceu a senha? fodase</a></div><br>
-                <a class="link" href="/horarios">Voltar</a>
+                <input class="btn-entrar" type="submit" value="Entrar"><br>
+                <a class="link" href="/">Voltar</a>
             </form>
         </div>
     </div>

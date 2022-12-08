@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --branco: #fff;
+    --cinza-claro: #ddd;
+    --preto: #000;
+    --verde-claro: #0a0;
+    --verde-escuro: #080;
+}
+header .navbar .profile{
+    height: 150px;
+    width: 150px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    z-index: 1;
+}
+header .navbar .profile a{
+    border-radius: 10px;
+}
+header .navbar .profile a:hover{
+    background-color: var(--cinza-claro);
+}
+header .navbar .profile .icon-profile{
+    font-size: 100px;
+}
+header .navbar .notification{
+    font-size: 40px;
+    margin-right: 170px;
+    color: var(--preto);
+    padding: 10px;
+    border-radius: 10px;
+}
+header .navbar .notification:hover{
+    background-color: var(--cinza-claro);
+}
