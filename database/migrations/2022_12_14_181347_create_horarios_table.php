@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('expedientes', function (Blueprint $table) {
-            $table->id();
-            $table->string('dia');
-            $table->string('horario_entrada',10);
-            $table->string('horario_saida',10);
-
+        Schema::create('horarios', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('id_tutor',20);
+            $table->foreign('id_tutor')->references('matricula_aluno')->on('tutores');
+            $table->string('dia',20);
+            $table->time('horario_entrada');
+            $table->time('horario_saida');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expedientes');
+        Schema::dropIfExists('horarios');
     }
 };

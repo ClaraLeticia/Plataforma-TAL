@@ -11,7 +11,7 @@
     <div class="container">
         <div class="card">
             <h1>Login</h1>
-            <form class="form" method="post" action="">
+            <form class="form" method="POST" action="/">
                 <div class="input">                  
                     <input type="text" name="matricula" required>
                     <span class="border-input"></span>  

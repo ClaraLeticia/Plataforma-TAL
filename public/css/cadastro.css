@@ -39,11 +39,11 @@ body{
     border-radius: 10px;
     border: 1px solid transparent;
 }
-form > h1{
+.container > h1{
     margin: 50px;
     text-align: center;
 }
-form{
+#form-tutor{
     margin: 50px;
 }
 .row{

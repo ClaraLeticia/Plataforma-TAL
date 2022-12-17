@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MembroEtepController;
+use App\Http\Controllers\TutorController;
+use App\Models\MembroEtep;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,26 +17,59 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('/recado', function () {
-    return view('recado');
-});
-
-Route::get('/perfiltutor', function () {
-    return view('perfil-tutor');
-});
-
-Route::get('/perfiletep', function () {
-    return view('perfil-etep');
-});
-
-Route::get('/cadastrotutor', function () {
-    return view('cadastro-tutor');
-});
+// ROTAS ABERTAS
+Route::get('/', [TutorController::class,'index']);
 
 Route::get('/login',[LoginController::class,'login']);
 
+// ROTAS RELACIONADAS A ETEP
+Route::post('/etep',[MembroEtepController::class,'cadastrar_etep']);
+
+Route::post('/etep',[MembroEtepController::class,'cadastrar_recado']);
+
+Route::get('/perfil-etep', [MembroEtepController::class,'perfil_etep']);
+
+Route::get('/perfil-etep/cadastro-recado', function () {
+    return view('cadastro-recado');
+});
+Route::get('/perfil-etep/editar-recado', function () {
+    return view('editar-recado');
+});
+Route::get('/perfil-etep/cadastro-etep', function () {
+    return view('cadastro-etep');
+});
+Route::get('/perfil-etep/cadastro-tutor', function () {
+    return view('cadastro-tutor');
+});
+
+Route::get('/perfil-etep/visualizar-etep', [MembroEtepController::class, 'visualizar_etep']);
+
+Route::get('/perfil-etep/visualizar-tutor', [TutorController::class,'visualizar_tutor']);
+
+Route::get('/perfil-etep/editar-etep', function () {
+    return view('editar-etep');
+});
+Route::get('/perfil-etep/editar-tutor', function () {
+    return view('editar-tutor');
+});
+
+// ROTAS RELACIONADAS AO TUTOR
+Route::post('/tutor',[TutorController::class,'store']);
+
+Route::get('/perfil-tutor', [TutorController::class,'perfil_tutor']);
+
+Route::get('/perfil-tutor/folha-frequencia', function(){
+    return view('folha-frequencia');
+});
+Route::get('/perfil-tutor/atividades-realizadas', function(){
+    return view('atividades-realizadas');
+});
+Route::get('/perfil-tutor/relatorio-atividade', function(){
+    return view('relatorio-atividade');
+});
+
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

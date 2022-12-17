@@ -1,0 +1,34 @@
+#imgtopo{
+    height: 90px;
+    width:250px;
+    float: left;
+  }
+ 
+  #cabecalho{
+    border-radius: 5px;
+    height: 50px;
+    width: 490px;
+    margin-left: 400px;
+    text-align: center;
+    background:  #d7e3bc;
+}
+ 
+.texto{
+    margin: 2px;
+    font-size: 11px;
+}
+ 
+#tabelatutor{
+    margin-top: 90px;
+    margin: 50px;
+ 
+}
+ 
+#expediente{
+    margin-top: -40px;
+    text-align: center;
+   
+}
+.qtd{
+    width: 50px;
+}
