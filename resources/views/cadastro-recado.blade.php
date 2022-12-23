@@ -17,7 +17,7 @@
 <body style="background-color: #ddd;">
     <div class="container">
         <h1>Cadastrar Recado</h1>
-        <form action="/etep" method="POST" class="p-4">
+        <form action="/cadastrar-recado" method="POST" class="p-4">
             @csrf
             <textarea class="form-control" name="descricao" rows="3"
             placeholder="Digite o recado..."></textarea>

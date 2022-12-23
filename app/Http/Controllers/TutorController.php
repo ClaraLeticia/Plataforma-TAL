@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tutor;
 use App\Models\Horario;
+use App\Models\Recado;
 use Illuminate\Console\View\Components\Alert;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -13,7 +14,8 @@ class TutorController extends Controller
 {
     public function index() {
         $tutores = Tutor::all();
-        return view('home',['tutores' => $tutores]);
+        $recados = Recado::all();
+        return view('home',compact('tutores','recados'));
     }
 
     public function visualizar_tutor() {

@@ -26,7 +26,11 @@
                     </div>
                     <div class="d-flex align-items-center float-end">
                         <a href="" class="btn btn-success ms-4">Editar</a>
-                        <a href="" class="btn btn-success ms-4">Excluir</a>
+                        <form action="/deletar-etep/{{$membro_etep->matricula_membro}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-success ms-4">Excluir</button>
+                        </form>
                     </div>
                 </div>
             </div>

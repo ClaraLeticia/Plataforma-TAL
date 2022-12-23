@@ -17,7 +17,7 @@
 <body style="background-color: #ddd;">
     <div class="container">
         <h1>Cadastrar Membros da ETEP</h1>
-        <form action="/etep" method="POST" class="p-3">
+        <form action="/cadastrar-etep" method="POST" class="p-3">
             @csrf
             <h2>Dados pessoais</h2><br>
             <div class="row g-2">

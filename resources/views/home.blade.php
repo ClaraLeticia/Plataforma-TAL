@@ -1,12 +1,13 @@
 @extends('layout.main')
 
 @section('content')
+
 <div class="container-fluid margin-top">
     <div class="row">
         @foreach($tutores as $tutor)
         <div class="col-sm-6 card-margin" id={{$tutor->materia}}>
             <div class="card-horarios rounded shadow">
-                <h4 class="bg-success titulo-materia border border-dark rounded-top m-0 d-flex align-items-center justify-content-center">{{$tutor->materia}}</h4>
+                <h4 class="titulo-materia border border-dark rounded-top m-0 d-flex align-items-center justify-content-center">{{$tutor->materia}}</h4>
                 <div class="row m-0">
                     <div class="col-sm-5 border border-end-0 border-dark p-2">
                         <div class="text-center">

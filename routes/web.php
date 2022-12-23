@@ -3,7 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MembroEtepController;
 use App\Http\Controllers\TutorController;
-use App\Models\MembroEtep;
+use App\Http\Controllers\RecadoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,14 +18,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 // ROTAS ABERTAS
-Route::get('/', [TutorController::class,'index']);
+Route::get('/', [TutorController::class,'index']); //OK
 
 Route::get('/login',[LoginController::class,'login']);
 
-// ROTAS RELACIONADAS A ETEP
-Route::post('/etep',[MembroEtepController::class,'cadastrar_etep']);
+Route::get('/visualizar-recado', [RecadoController::class,'index']);
 
-Route::post('/etep',[MembroEtepController::class,'cadastrar_recado']);
+// ROTAS RELACIONADAS A ETEP
+Route::post('/cadastrar-etep',[MembroEtepController::class,'cadastrar_etep']); //OK
+
+Route::post('/cadastrar-recado',[MembroEtepController::class,'cadastrar_recado']); //OK
 
 Route::get('/perfil-etep', [MembroEtepController::class,'perfil_etep']);
 
@@ -42,9 +44,9 @@ Route::get('/perfil-etep/cadastro-tutor', function () {
     return view('cadastro-tutor');
 });
 
-Route::get('/perfil-etep/visualizar-etep', [MembroEtepController::class, 'visualizar_etep']);
+Route::get('/perfil-etep/visualizar-etep', [MembroEtepController::class, 'visualizar_etep']);//Ok
 
-Route::get('/perfil-etep/visualizar-tutor', [TutorController::class,'visualizar_tutor']);
+Route::get('/perfil-etep/visualizar-tutor', [TutorController::class,'visualizar_tutor']); //OK
 
 Route::get('/perfil-etep/editar-etep', function () {
     return view('editar-etep');
@@ -52,9 +54,10 @@ Route::get('/perfil-etep/editar-etep', function () {
 Route::get('/perfil-etep/editar-tutor', function () {
     return view('editar-tutor');
 });
+Route::delete('/deletar-etep/{matricula_membro}', [MembroEtepController::class,'deletar_etep']);
 
 // ROTAS RELACIONADAS AO TUTOR
-Route::post('/tutor',[TutorController::class,'store']);
+Route::post('/tutor',[TutorController::class,'store']); //OK
 
 Route::get('/perfil-tutor', [TutorController::class,'perfil_tutor']);
 

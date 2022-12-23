@@ -44,4 +44,11 @@ class MembroEtepController extends Controller
         $recado->save();
         return redirect('perfil-etep');
     }
+
+    public function deletar_etep($matricula_membro){
+        MembroEtep::findOrFail($matricula_membro)->delete();
+        return redirect('/perfil-etep/visualizar-etep');
+    }
+
+    
 }
