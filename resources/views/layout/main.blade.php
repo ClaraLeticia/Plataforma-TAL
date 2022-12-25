@@ -69,6 +69,8 @@
                             <li><a class="dropdown-item" href="/perfil-etep/visualizar-tutor">Visualizar Tutores</a></li>
                             <li><a class="dropdown-item" href="/perfil-etep/cadastro-etep">Cadastrar Membros da ETEP</a></li>
                             <li><a class="dropdown-item" href="/perfil-etep/visualizar-etep">Visualizar Membros da ETEP</a></li>
+                            <li><a class="dropdown-item" href="/perfil-etep/materias">Matérias</a></li>
+                            <li><a class="dropdown-item" href="/perfil-etep/professores">Professores</a></li>
                         </ul>
                     </li> 
                 </ul>

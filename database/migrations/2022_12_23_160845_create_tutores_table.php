@@ -20,8 +20,10 @@ return new class extends Migration
             $table->string('nome',50);
             $table->string('email',50);
             $table->string('telefone',20);
-            $table->string('materia',60);
-            $table->string('professor_orientador',50);
+            $table->integer('id_materia',false,true)->nullable()->default(NULL);
+            $table->foreign('id_materia')->references('id')->on('materias');
+            $table->integer('id_professor_orientador',false,true)->nullable()->default(NULL);
+            $table->foreign('id_professor_orientador')->references('id')->on('professores');
             $table->string('edital',10);
             $table->string('semestre',10);
             $table->string('senha',20);

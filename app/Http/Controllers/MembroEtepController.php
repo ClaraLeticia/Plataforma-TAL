@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\MembroEtep;
-use App\Models\Recado;
-use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 
@@ -30,18 +28,6 @@ class MembroEtepController extends Controller
         $membro_etep->email = $request->email;
         $membro_etep->senha = $request->senha;
         $membro_etep->save();
-        return redirect('perfil-etep');
-    }
-
-
-    public function cadastrar_recado(Request $request) {
-        $recado = new Recado;
-        // $recado->id_membro_etep = $request->
-        date_default_timezone_set('America/Sao_Paulo');
-        $recado->dia = date('Y-m-d');
-        $recado->hora = new DateTime();
-        $recado->descricao = $request->descricao;
-        $recado->save();
         return redirect('perfil-etep');
     }
 

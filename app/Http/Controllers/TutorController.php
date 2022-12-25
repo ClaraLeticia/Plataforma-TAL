@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tutor;
 use App\Models\Horario;
-use App\Models\Recado;
 use Illuminate\Console\View\Components\Alert;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -14,8 +13,7 @@ class TutorController extends Controller
 {
     public function index() {
         $tutores = Tutor::all();
-        $recados = Recado::all();
-        return view('home',compact('tutores','recados'));
+        return view('home',['tutores'=>$tutores]);
     }
 
     public function visualizar_tutor() {
@@ -79,50 +77,7 @@ class TutorController extends Controller
         $horario_sexta->horario_saida = $request->horario_saida_sexta;
         $horario_sexta->save();
 
-        return redirect('/');
-        
-        // foreach($horario['horario_entrada'] as $i => $value){
-        //     if(empty($horario['horario_entrada'][$i]) || empty($horario['horario_saida'][$i])){
-        //         unset($horario['horario_entrada'][$i]);
-        //         unset($horario['horario_saida'][$i]);
-        //     }
-        // }
-        // $horarioentrada = [];
-        // foreach($horario['horario_entrada'] as $i => $value){
-        //     array_push($horarioentrada, $value);
-        // }
-        // $horariosaida = [];
-        // foreach($horario['horario_saida'] as $i => $value){
-        //     array_push($horariosaida, $value);
-        // }
-        // // function array_replace_key(&$arr, $old, $new, $overwrite = true): bool {
-        // //             if (isset($arr[$new]) and !$overwrite) {
-        // //                 return false;
-        // //             }
-        // //             $arr[$new] = $arr[$old];
-        // //             unset($arr[$old]);
-        // //             return true;
-        // // }
-        // $id_tutor = [];
-        // foreach($horario['dia'] as $key => $value){
-        //     $id_tutor[$key] = $request->matricula_aluno;
-        //     // array_replace_key($id_tutor, $key, 'id_tutor');
-        // }
-        // // array_replace_key($id_tutor, 0, 'id_tutor');
-        // // array_replace_key($id_tutor, 1, 'id_tutor');
-        // // array_replace_key($horario['dia'], 0, 'dia');
-        // // array_replace_key($horario['dia'], 1, 'dia');
-        // // array_replace_key($horarioentrada, 0, 'horario_entrada');
-        // // array_replace_key($horarioentrada, 1, 'horario_entrada');
-        // // array_replace_key($horariosaida, 0, 'horario_saida');
-        // // array_replace_key($horariosaida, 1, 'horario_saida');
-        // $novohorario = [$id_tutor,$horario['dia'],$horarioentrada,$horariosaida];
-        // echo "<pre>";
-        // var_dump($novohorario);
-        // echo "</pre>";
-        // // DB::table('horarios')->insert($novohorario);
-
-        
+        return redirect('/');   
         
     }
 

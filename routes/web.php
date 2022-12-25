@@ -27,7 +27,7 @@ Route::get('/visualizar-recado', [RecadoController::class,'index']);
 // ROTAS RELACIONADAS A ETEP
 Route::post('/cadastrar-etep',[MembroEtepController::class,'cadastrar_etep']); //OK
 
-Route::post('/cadastrar-recado',[MembroEtepController::class,'cadastrar_recado']); //OK
+Route::post('/cadastrar-recado',[RecadoController::class,'cadastrar_recado']); //OK
 
 Route::get('/perfil-etep', [MembroEtepController::class,'perfil_etep']);
 
@@ -55,6 +55,13 @@ Route::get('/perfil-etep/editar-tutor', function () {
     return view('editar-tutor');
 });
 Route::delete('/deletar-etep/{matricula_membro}', [MembroEtepController::class,'deletar_etep']);
+
+Route::get('/perfil-etep/professores', function(){
+    return view('professores');
+});
+Route::get('/perfil-etep/materias', function(){
+    return view('materias');
+});
 
 // ROTAS RELACIONADAS AO TUTOR
 Route::post('/tutor',[TutorController::class,'store']); //OK
