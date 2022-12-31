@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center float-end">
-                        <a href="" class="btn btn-success ms-4">Editar</a>
+                        <a href="/perfil-etep/editar-etep/{{$membro_etep->matricula_membro}}" class="btn btn-success ms-4">Editar</a>
                         <form action="/deletar-etep/{{$membro_etep->matricula_membro}}" method="POST">
                             @csrf
                             @method('DELETE')

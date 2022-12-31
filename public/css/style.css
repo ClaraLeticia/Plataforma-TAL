@@ -85,6 +85,16 @@ td, th{
     margin-bottom: 30px;
 }
 
+/* PÁGINA DE RECADOS */
 .card-recado{
     text-align: justify;
 }
+
+/* PÁGINA DE MATÉRIAS */
+#table-materias{
+    margin-bottom: 100px;
+}
+#table-materias td, #table-materias th{
+    border-bottom: 1px solid var(--preto);
+}
+   

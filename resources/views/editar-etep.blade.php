@@ -16,43 +16,43 @@
 </head>
 <body style="background-color: #ddd;">
     <div class="container">
-    <h1>Editar Membros da ETEP</h1>
-        <form action="/etep" method="POST">
+    <h1>Editar perfil de {{$membro_etep->nome}}</h1>
+        <form action="/editar-etep/{{$membro_etep->matricula_membro}}" method="POST">
             @csrf
-            
+            @method('PUT')
             <h2>Dados pessoais</h2><br>
             <div class="row g-2">
                 <div class="col-md-9">
                     <label for="nome">Nome Completo</label><br>
-                    <input class="form-control" type="text" name="nome" id="" placeholder="Nome Completo" required>
+                    <input class="form-control" type="text" name="nome" id="" placeholder="Nome Completo" value="{{$membro_etep->nome}}" required>
                 </div>
                 <div class="col-md-3">
-                    <label for="matricula">Matrícula</label><br>
-                    <input class="form-control" type="text" name="matricula_aluno" id="" placeholder="Matrícula" required>
+                    <label for="matricula_membro">Matrícula</label><br>
+                    <input class="form-control" type="text" name="matricula_membro" id="" placeholder="Matrícula" value="{{$membro_etep->matricula_membro}}" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <label for="email">E-mail</label><br>
-                    <input class="form-control" type="email" name="email" id="" placeholder="email@email.com" required>
+                    <input class="form-control" type="email" name="email" id="" placeholder="email@email.com" value="{{$membro_etep->email}}" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <label for="senha">Senha</label><br>
-                    <input class="form-control" type="password" name="senha" placeholder="Senha" minlength="8" maxlength="20" required> 
+                    <input class="form-control" type="password" name="senha" placeholder="Senha" minlength="8" maxlength="20" value="{{$membro_etep->senha}}" required> 
                     <div id="passwordHelpBlock" class="form-text">
                         Sua senha deve conter de 8 a 20 caracteres.
                     </div>
                 </div>
                 <div class="col-md-6">
                     <label for="senha">Confirmar senha</label><br>
-                    <input class="form-control" type="password" name="confirmar_senha" placeholder="Confirmar senha" minlength="8" maxlength="20" required>
+                    <input class="form-control" type="password" name="" placeholder="Confirmar senha" minlength="8" maxlength="20" value="{{$membro_etep->senha}}" readonly required>
                 </div>
             </div>
             <div class="d-flex justify-content-between">
                 <a href="/perfil-etep"><input type="button" class="btn btn-success" value="Voltar"></a>
-                <input form="form-tutor-horario" type="submit" class="btn btn-success" value="Editar">
+                <input type="submit" class="btn btn-success" value="Editar">
             </div><br>
         </form>
     </div>

@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('professores', function (Blueprint $table) {
-            $table->integer('id', true, true);
+            $table->integer('id',true,true);
             $table->string('nome',50);
-            $table->integer('id_materia',false,true)->nullable()->default(NULL);
+            $table->integer('id_materia',false,true);
             $table->foreign('id_materia')->references('id')->on('materias');
             $table->string('semestre',10);
             $table->timestamps();

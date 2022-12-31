@@ -7,6 +7,7 @@
     <title>TAL Horários</title>
     <!-- css -->
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/cadastro.css')}}">
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -84,7 +85,7 @@
     
     <!--RODAPE-->
     <footer class="d-flex justify-content-center align-items-center bg-body p-2">
-        <p class="m-0">criado por clara, marina, ruana e sebastião &copy 2022</p>
+        <p class="m-0">Criado por Clara, Marina, Ruana e Sebastião &copy 2022</p>
     </footer>
     <!-- IONICONS -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

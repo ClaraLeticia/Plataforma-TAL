@@ -18,6 +18,10 @@ class MembroEtepController extends Controller
         return view('perfil-etep',['membros_etep' => $membros_etep]);
     }
 
+    public function cadastro_etep(){
+        return view('cadastro-etep');
+    }
+
     public function cadastrar_etep(Request $request) {
         $membro_etep = new MembroEtep;
         if ($request->senha != $request->confirmar_senha) {
@@ -36,5 +40,14 @@ class MembroEtepController extends Controller
         return redirect('/perfil-etep/visualizar-etep');
     }
 
+    public function editar_etep($matricula_membro){
+        $membro_etep = MembroEtep::findOrFail($matricula_membro);
+        return view('editar-etep',['membro_etep' => $membro_etep]);
+    }
+
+    public function atualizar_etep(Request $request){
+        MembroEtep::findOrFail($request->matricula_membro)->update($request->all());
+        return redirect('/perfil-etep/visualizar-etep');
+    }
     
 }
