@@ -23,9 +23,17 @@
                         <img class="me-2" style="width: 40px;" src="{{asset('/img/notifications.svg')}}" alt="">
                         <h5 class="m-0">Recados</h5>
                     </a>
-                    <img class="ms-5 me-2" style="width: 100px;" src="{{asset('/img/person-circle-outline.svg')}}" alt="">
-                    <a class="text-decoration-none text-dark p-2 rounded" href="/login"><h5 class="m-0">Entrar</h5></a>
-                </div>
+                    <img class="ms-4 me-2" style="width: 100px;" src="{{asset('/img/person-circle-outline.svg')}}" alt="">
+                    @auth
+                    <a class="text-decoration-none text-dark p-2 rounded" href="/perfil-etep"><h5 class="m-0">Olá {{auth()->user()->name}}</h5></a>
+                    <span class="mx-2" style="font-size: 30px;">|</span>
+                    <a class="text-decoration-none text-dark p-2 rounded me-2" href="/logout"><h5 class="m-0">Sair</h5></a>
+                    @else
+                    <a class="text-decoration-none text-dark p-2 rounded me-2" href="/login"><h5 class="m-0">Entrar</h5></a>
+                    @endauth
+                    
+                    
+
             </div>
         </nav>
         <div class="navbar navbar-expand-lg bg-body border-bottom border-1 border-dark">

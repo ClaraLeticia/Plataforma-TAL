@@ -40,7 +40,7 @@ main{
 .nav-link:focus, .nav-link:hover {
     color: var(--verde-escuro) !important;
 }
-#recados-perfil > a:hover{
+#recados-perfil a:hover{
     background-color: var(--cinza-claro);
 }
 .card-horarios{

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\MembroEtep;
+use App\Models\User;
+use App\Models\Materia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 
 class MembroEtepController extends Controller
 {
+
     public function visualizar_etep() {
         $membros_etep = MembroEtep::all();
         return view('visualizar-etep',['membros_etep' => $membros_etep]);
@@ -32,7 +35,17 @@ class MembroEtepController extends Controller
         $membro_etep->email = $request->email;
         $membro_etep->senha = $request->senha;
         $membro_etep->save();
-        return redirect('perfil-etep');
+
+        $usuario = new User;
+        $usuario->name = $request->nome;
+        $usuario->email = $request->email;
+        $usuario->matricula = $request->matricula_membro;
+        $usuario->id_user = 1;
+        $usuario['password'] = bcrypt($request->senha);
+        $usuario->save();
+
+        return redirect('/perfil-etep/visualizar-etep');   
+
     }
 
     public function deletar_etep($matricula_membro){

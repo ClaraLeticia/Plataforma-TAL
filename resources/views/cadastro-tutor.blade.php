@@ -17,7 +17,7 @@
 <body style="background-color: #ddd;">
     <div class="container">
         <h1>Cadastrar tutores</h1>
-        <form action="/tutor" method="POST" id="form-tutor-horario" class="p-3">
+        <form action="/cadastrar-tutor" method="POST" id="form-tutor-horario" class="p-3">
             @csrf
             <h2>Dados pessoais</h2><br>
             <div class="row g-2">
@@ -43,11 +43,21 @@
             <div class="row">
                 <div class="col-md-8">
                     <label for="materia">Matéria</label>
-                    <input type="text" name="materia" id="" class="form-control" placeholder="Matéria">
+                    <select class="form-select" name="id_materia">
+                        <option></option>
+                        @foreach($materias as $materia)
+                        <option value="{{$materia->id}}">{{$materia->materia}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <label for="professor_orientador">Professor Orientador</label><br>
-                    <input class="form-control" type="text" name="professor_orientador" id="" placeholder="Professor Orientador">
+                    <select class="form-select" name="id_professor_orientador">
+                        <option></option>
+                        @foreach($professores as $professor)
+                        <option value="{{$professor->id}}">{{$professor->nome}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="row">
@@ -77,7 +87,7 @@
             <h2>Horários</h2>
             <p>Marque os dias da semana selecionados pelo tutor e ao lado seu horário disponível</p><br>
             
-                <form action="/tutor" method="POST" id="form-tutor-horario">
+                <form action="/cadastrar-tutor" method="POST" id="form-tutor-horario">
                     <div class="row g-3 align-items-center">
                         <div class="col-sm-2">
                             <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" name="dia_segunda" value="Segunda-feira">

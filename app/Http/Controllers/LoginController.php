@@ -11,15 +11,24 @@ class LoginController extends Controller
         return view('login');
     }
     
-    // public function auth(Request $request) {
-    //     $credenciais = ['matricula_membro'=>$request->login,'senha'=>$request->password];
+    public function auth(Request $request) {
+        $credenciais = $request->validate([
+            'matricula' => ['required'],
+            'password' => ['required'],
+        ]);
         
-    //     if(Auth::attempt($credenciais, true)){
-    //         dd($request);
-    //         $request->session()->regenerate();
-    //         return redirect()->intended('/perfil-etep');
-    //     } else {
-    //         return redirect('/login')->with('erro','Usuário ou senha inválida');
-    //     }
-    // }
+        if(Auth::attempt($credenciais)){
+            $request->session()->regenerate();
+            return redirect()->intended('/perfil-etep');
+        } else {
+            return redirect('/login')->with('erro','Usuário ou senha inválida');
+        }
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
 }

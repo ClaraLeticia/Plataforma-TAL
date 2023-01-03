@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tutor;
 use App\Models\Horario;
-use Illuminate\Console\View\Components\Alert;
-use Symfony\Component\VarDumper\VarDumper;
+use App\Models\User;
+use App\Models\Professor;
+use App\Models\Materia;
+
 
 
 class TutorController extends Controller
 {
-    public function index() {
-        $tutores = Tutor::all();
-        return view('home',['tutores'=>$tutores]);
-    }
+        public function index() {
+            $tutores = Tutor::all();
+            $materias = Materia::all();
+            return view('home',compact('tutores','materias'));
+        }
 
     public function visualizar_tutor() {
         $tutores = Tutor::all();
@@ -26,7 +29,13 @@ class TutorController extends Controller
         return view('perfil-tutor',['tutores' => $tutores]);
     }
 
-    public function store(Request $request) {
+    public function cadastro_tutor(){
+        $materias = Materia::all();
+        $professores = Professor::all();
+        return view('cadastro-tutor', compact('materias','professores'));
+    }
+
+    public function cadastrar_tutor(Request $request) {
         $tutor = new Tutor;
         if ($request->senha != $request->confirmar_senha) {
             return redirect('/perfil-etep/cadastro-tutor');
@@ -35,12 +44,20 @@ class TutorController extends Controller
         $tutor->nome = $request->nome;
         $tutor->email = $request->email;
         $tutor->telefone = $request->telefone;
-        $tutor->materia = $request->materia;
-        $tutor->professor_orientador = $request->professor_orientador;
+        $tutor->id_materia = $request->id_materia;
+        $tutor->id_professor_orientador = $request->id_professor_orientador;
         $tutor->edital = $request->edital;
         $tutor->semestre = $request->semestre;
         $tutor->senha = $request->senha;
         $tutor->save();
+
+        $usuario = new User;
+        $usuario->name = $request->nome;
+        $usuario->email = $request->email;
+        $usuario->matricula = $request->matricula_aluno;
+        $usuario->id_user = 2;
+        $usuario['password'] = bcrypt($request->senha);
+        $usuario->save();
 
         $horario_segunda = new Horario;
         $horario_segunda->id_tutor = $request->matricula_aluno;
@@ -77,7 +94,7 @@ class TutorController extends Controller
         $horario_sexta->horario_saida = $request->horario_saida_sexta;
         $horario_sexta->save();
 
-        return redirect('/');   
+        return redirect('/perfil-etep/visualizar-tutor');   
         
     }
 

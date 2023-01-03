@@ -6,6 +6,7 @@ use App\Http\Controllers\MembroEtepController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\RecadoController;
+use App\Models\Materia;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,11 +23,17 @@ use Illuminate\Support\Facades\Route;
 // ROTAS ABERTAS
 Route::get('/', [TutorController::class,'index']); //OK
 
-// Route::get('/login',[LoginController::class,'login']);
-// Route::post('/auth',[LoginController::class,'auth']);
+Route::get('/login',[LoginController::class,'login']); //ok
+Route::post('/auth',[LoginController::class,'auth']); //ok
+Route::get('/logout',[LoginController::class,'logout']); //ok
 
 
-// ROTAS RELACIONADAS A ETEP
+
+// ROTAS PARA O PERFIL
+Route::get('/perfil-etep', [MembroEtepController::class,'perfil_etep']); //ok
+Route::get('/perfil-tutor', [TutorController::class,'perfil_tutor']); //ok
+
+
 //CRUD ETEP
 Route::post('/cadastrar-etep',[MembroEtepController::class,'cadastrar_etep']); //ok
 Route::get('/perfil-etep/cadastro-etep', [MembroEtepController::class,'cadastro_etep']); //ok
@@ -56,28 +63,19 @@ Route::put('/editar-recado/{id}', [RecadoController::class,'atualizar_recado']);
 Route::delete('/deletar-recado/{id}', [RecadoController::class,'deletar_recado']); //ok
 
 
-Route::get('/perfil-etep', [MembroEtepController::class,'perfil_etep']);
-
-
-Route::get('/perfil-etep/cadastro-tutor', function () {
-    return view('cadastro-tutor');
-});
-
-
-Route::get('/perfil-etep/visualizar-tutor', [TutorController::class,'visualizar_tutor']); //OK
+Route::post('/cadastrar-tutor',[TutorController::class,'cadastrar_tutor']);
+Route::get('/perfil-etep/cadastro-tutor', [TutorController::class,'cadastro_tutor']); //ok
+Route::get('/perfil-etep/visualizar-tutor', [TutorController::class,'visualizar_tutor']); //ok
+Route::get('/perfil-etep/editar-tutor/{matricula_membro}', [TutorController::class,'editar_tutor']);
+Route::put('/editar-tutor/{matricula_membro}', [TutorController::class,'atualizar_tutor']);
+Route::delete('/deletar-tutor/{matricula_membro}', [TutorController::class,'deletar_tutor']);
 
 
 
 
-Route::get('/perfil-etep/editar-tutor', function () {
-    return view('editar-tutor');
-});
 
 
 // ROTAS RELACIONADAS AO TUTOR
-Route::post('/tutor',[TutorController::class,'store']); //OK
-
-Route::get('/perfil-tutor', [TutorController::class,'perfil_tutor']);
 
 Route::get('/perfil-tutor/folha-frequencia', function(){
     return view('folha-frequencia');
@@ -88,6 +86,8 @@ Route::get('/perfil-tutor/atividades-realizadas', function(){
 Route::get('/perfil-tutor/relatorio-atividade', function(){
     return view('relatorio-atividade');
 });
+
+
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
     Route::get('/dashboard', function () {

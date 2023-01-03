@@ -21,9 +21,9 @@
             <form class="form" method="post" action="/auth">
                 @csrf
                 <div class="input">                  
-                    <input type="text" name="login" required>
+                    <input type="text" name="matricula" required>
                     <span class="border-input"></span>  
-                    <label for="login">Matrícula</label>              
+                    <label for="matricula">Matrícula</label>              
                 </div>
                 <div class="input">                  
                     <input type="password" name="password" required>
