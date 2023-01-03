@@ -8,9 +8,10 @@ use App\Models\Materia;
 
 class ProfessorController extends Controller
 {
-    public function visualizar_etep() {
+    public function visualizar_professor() {
         $professores = Professor::all();
-        return view('visualizar-professor',['professores' => $professores]);
+        $materias = Materia::all();
+        return view('visualizar-professor',['professores' => $professores,'materias' => $materias]);
     }
 
     public function cadastro_professor(){
@@ -24,7 +25,7 @@ class ProfessorController extends Controller
         $professor->id_materia = $request->id_materia;
         $professor->semestre = $request->semestre;
         $professor->save();
-        return redirect('perfil-etep');
+        return redirect('perfil-etep/visualizar-professor');
     }
 
     public function deletar_professor($id){
@@ -33,8 +34,9 @@ class ProfessorController extends Controller
     }
 
     public function editar_professor($id){
-        $professores = Professor::findOrFail($id);
-        return view('editar-professor',['professores' => $professores]);
+        $professor = Professor::findOrFail($id);
+        $materias = Materia::all();
+        return view('editar-professor',['professor' => $professor,'materias' => $materias]);
     }
 
     public function atualizar_professor(Request $request){

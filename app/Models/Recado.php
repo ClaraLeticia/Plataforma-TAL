@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Recado extends Model
 {
     protected $table = 'recados';
+    protected $guarded = [];
 
     public function membro_etep(){
         return $this->belongsTo('App\Model\MembroEtep');

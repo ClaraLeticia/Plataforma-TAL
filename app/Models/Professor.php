@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Professor extends Model
 {
     protected $table = 'professores';
-    protected $primaryKey = ['id','id_materia','semestre'];
+    protected $guarded = [];
+
+    public function membro_etep(){
+        return $this->belongsTo('App\Model\MembroEtep');
+    }
+
 }

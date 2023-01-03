@@ -17,14 +17,15 @@
 <body style="background-color: #ddd;">
     <div class="container">
         <h1>Editar Recado</h1>
-        <form action="/etep" method="POST" class="p-4">
+        <form action="/editar-recado/{{$recado->id}}" method="POST" class="p-4">
             @csrf
+            @method('PUT')
             <textarea class="form-control" name="descricao" rows="3"
-            placeholder="Digite o recado..."></textarea>
+            placeholder="Digite o recado...">{{$recado->descricao}}</textarea>
             <br><br>
             <div class="d-flex justify-content-between">
                 <a href="/perfil-etep"><input type="button" class="btn btn-success" value="Voltar"></a>
-                <input form="form-tutor-horario" type="submit" class="btn btn-success" value="Editar">
+                <input type="submit" class="btn btn-success" value="Editar">
             </div>
         </form>
     </div>

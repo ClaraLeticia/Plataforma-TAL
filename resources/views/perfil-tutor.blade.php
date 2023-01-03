@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 
 @section('content')
 <h1 class="text-center my-4">Meu Perfil</h1>

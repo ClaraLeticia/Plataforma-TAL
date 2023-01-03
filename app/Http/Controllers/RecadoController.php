@@ -7,9 +7,13 @@ use DateTime;
 
 class RecadoController extends Controller
 {
-    public function index() {
+    public function visualizar_recado() {
         $recados = Recado::all();
         return view('visualizar-recado',compact('recados'));
+    }
+
+    public function cadastro_recado() {
+        return view('cadastro-recado');
     }
 
     public function cadastrar_recado(Request $request) {
@@ -22,4 +26,20 @@ class RecadoController extends Controller
         $recado->save();
         return redirect('perfil-etep');
     }
+
+    public function deletar_recado($id){
+        Recado::findOrFail($id)->delete();
+        return redirect('/perfil-etep/visualizar-recado');
+    }
+
+    public function editar_recado($id){
+        $recado = recado::findOrFail($id);
+        return view('editar-recado',['recado' => $recado]);
+    }
+
+    public function atualizar_recado(Request $request){
+        recado::findOrFail($request->id)->update($request->all());
+        return redirect('/perfil-etep/visualizar-recado');
+    }
+
 }

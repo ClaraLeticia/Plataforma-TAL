@@ -11,6 +11,20 @@ class MembroEtep extends Model
     protected $primaryKey = 'matricula_membro';
     protected $guarded = [];
 
+    // protected $fillable = [
+    //     'matricula_membro',
+    //     'nome',
+    //     'email',
+    //     'senha',
+    // ];
+
+    // protected $hidden = [
+    //     'senha',
+    //     'remember_token',
+    //     'two_factor_recovery_codes',
+    //     'two_factor_secret',
+    // ];
+
     public function tutores(){
         return $this->hasMany('App\Model\Tutor');
     }

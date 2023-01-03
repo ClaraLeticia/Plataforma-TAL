@@ -19,7 +19,7 @@
             <div class="container-fluid ">
                 <a class="navbar-brand fs-1" href="/">TAL Horários</a>
                 <div class="d-flex align-items-center" id="recados-perfil">
-                    <a class="d-flex align-items-center text-decoration-none text-dark p-1 rounded" href="/visualizar-recado">
+                    <a class="d-flex align-items-center text-decoration-none text-dark p-1 rounded" href="/perfil-etep/visualizar-recado">
                         <img class="me-2" style="width: 40px;" src="{{asset('/img/notifications.svg')}}" alt="">
                         <h5 class="m-0">Recados</h5>
                     </a>
@@ -66,12 +66,16 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/perfil-etep/cadastro-recado">Postar Recado</a></li>
-                            <li><a class="dropdown-item" href="/perfil-etep/cadastro-tutor">Cadastrar Tutores</a></li>
-                            <li><a class="dropdown-item" href="/perfil-etep/visualizar-tutor">Visualizar Tutores</a></li>
-                            <li><a class="dropdown-item" href="/perfil-etep/cadastro-etep">Cadastrar Membros da ETEP</a></li>
-                            <li><a class="dropdown-item" href="/perfil-etep/visualizar-etep">Visualizar Membros da ETEP</a></li>
                             <li><a class="dropdown-item" href="/perfil-etep/materias">Matérias</a></li>
-                            <li><a class="dropdown-item" href="/perfil-etep/professores">Professores</a></li>
+                            <li><h5 class="ms-2 mt-1">ETEP</h5></li>
+                            <li><a class="dropdown-item" href="/perfil-etep/cadastro-etep">Cadastrar</a></li>
+                            <li><a class="dropdown-item" href="/perfil-etep/visualizar-etep">Visualizar</a></li>
+                            <li><h5 class="ms-2 mt-1">Professores</h5></li>
+                            <li><a class="dropdown-item" href="/perfil-etep/cadastro-professor">Cadastrar</a></li>
+                            <li><a class="dropdown-item" href="/perfil-etep/visualizar-professor">Visualizar</a></li>
+                            <li><h5 class="ms-2 mt-1">Tutores</h5></li>
+                            <li><a class="dropdown-item" href="/perfil-etep/cadastro-tutor">Cadastrar</a></li>
+                            <li><a class="dropdown-item" href="/perfil-etep/visualizar-tutor">Visualizar</a></li>
                         </ul>
                     </li> 
                 </ul>

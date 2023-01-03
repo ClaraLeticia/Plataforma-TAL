@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 
 @section('content')
 <!-- <img id="homemdeferro" src="{{asset('/img/homemdeferro.gif')}}" alt="icone"> -->
