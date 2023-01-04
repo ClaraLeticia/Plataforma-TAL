@@ -11,6 +11,7 @@
                 <div class="card shadow rounded visualizar-card card-recado" style="width: 50rem;">
                     <div class="rounded-top p-3 title d-flex justify-content-between align-items-center bg-success text-light">
                         <h4 class="m-0">{{date('d/m/Y', strtotime($recado->dia))}}</h4>
+                        @can('opcoes-etep')
                         <div class="d-flex align-items-center">
                             <a class="p-1 me-2" href="/perfil-etep/editar-recado/{{$recado->id}}"><img class="rounded" style="width: 40px;" src="{{asset('/img/create-outline.svg')}}" alt="editar" title="Editar"></a>
                             <form action="/deletar-recado/{{$recado->id}}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esse Recado?')">
@@ -21,6 +22,7 @@
                                 </button>
                             </form>
                         </div>
+                        @endcan
                     </div>
                     <div class="p-3">
                         <p class="m-0">{{$recado->descricao}}</p>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\MembroEtepController;
@@ -21,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // ROTAS ABERTAS
-Route::get('/', [TutorController::class,'index']); //OK
+Route::get('/', [Controller::class,'index']); //OK
 
-Route::get('/login',[LoginController::class,'login']); //ok
+Route::get('/login',[LoginController::class,'login'])->name('login'); //ok
 Route::post('/auth',[LoginController::class,'auth']); //ok
 Route::get('/logout',[LoginController::class,'logout']); //ok
 

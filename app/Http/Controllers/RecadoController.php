@@ -4,15 +4,22 @@ namespace App\Http\Controllers;
 use App\Models\Recado;
 use Illuminate\Http\Request;
 use DateTime;
+use Illuminate\Support\Facades\Gate;
+
 
 class RecadoController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth')->only(['cadastro_recado','editar_recado']);
+    }
+    
     public function visualizar_recado() {
         $recados = Recado::all();
         return view('visualizar-recado',compact('recados'));
     }
 
     public function cadastro_recado() {
+        Gate::authorize('opcoes-etep');
         return view('cadastro-recado');
     }
 
@@ -34,6 +41,7 @@ class RecadoController extends Controller
 
     public function editar_recado($id){
         $recado = recado::findOrFail($id);
+        Gate::authorize('opcoes-etep');
         return view('editar-recado',['recado' => $recado]);
     }
 

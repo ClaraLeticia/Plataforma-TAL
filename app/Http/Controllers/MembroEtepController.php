@@ -7,21 +7,28 @@ use App\Models\User;
 use App\Models\Materia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Gate;
 
 class MembroEtepController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
 
     public function visualizar_etep() {
         $membros_etep = MembroEtep::all();
+        Gate::authorize('opcoes-etep');
         return view('visualizar-etep',['membros_etep' => $membros_etep]);
     }
 
     public function perfil_etep() {
         $membros_etep = MembroEtep::all();
+        Gate::authorize('opcoes-etep');
         return view('perfil-etep',['membros_etep' => $membros_etep]);
     }
 
     public function cadastro_etep(){
+        Gate::authorize('opcoes-etep');
         return view('cadastro-etep');
     }
 
@@ -55,6 +62,7 @@ class MembroEtepController extends Controller
 
     public function editar_etep($matricula_membro){
         $membro_etep = MembroEtep::findOrFail($matricula_membro);
+        Gate::authorize('opcoes-etep');
         return view('editar-etep',['membro_etep' => $membro_etep]);
     }
 

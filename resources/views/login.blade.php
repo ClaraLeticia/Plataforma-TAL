@@ -30,6 +30,10 @@
                     <span class="border-input"></span>
                     <label for="password">Senha</label>
                 </div>
+                <div id="div-checkbox">
+                    <input id="checkbox" type="checkbox" name="remember">
+                    <label for="remember">Lembrar-me</label>
+                </div>
                 <input class="btn-entrar" type="submit" value="Entrar"><br>
                 <a class="link" href="/">Voltar</a>
             </form>

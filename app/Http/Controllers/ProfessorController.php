@@ -5,17 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Professor;
 use App\Models\Materia;
+use Illuminate\Support\Facades\Gate;
 
 class ProfessorController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     public function visualizar_professor() {
         $professores = Professor::all();
         $materias = Materia::all();
+        Gate::authorize('opcoes-etep');
         return view('visualizar-professor',['professores' => $professores,'materias' => $materias]);
     }
 
     public function cadastro_professor(){
         $materias = Materia::all();
+        Gate::authorize('opcoes-etep');
         return view('cadastro-professor',['materias' => $materias]);
     }
 
@@ -36,6 +43,7 @@ class ProfessorController extends Controller
     public function editar_professor($id){
         $professor = Professor::findOrFail($id);
         $materias = Materia::all();
+        Gate::authorize('opcoes-etep');
         return view('editar-professor',['professor' => $professor,'materias' => $materias]);
     }
 

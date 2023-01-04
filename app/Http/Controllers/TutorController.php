@@ -8,19 +8,18 @@ use App\Models\Horario;
 use App\Models\User;
 use App\Models\Professor;
 use App\Models\Materia;
-
+use Illuminate\Support\Facades\Gate;
 
 
 class TutorController extends Controller
 {
-        public function index() {
-            $tutores = Tutor::all();
-            $materias = Materia::all();
-            return view('home',compact('tutores','materias'));
-        }
+    public function __construct() {
+        $this->middleware('auth');
+    }
 
     public function visualizar_tutor() {
         $tutores = Tutor::all();
+        Gate::authorize('opcoes-etep');
         return view('visualizar-tutor',['tutores' => $tutores]);
     }
 
@@ -32,6 +31,7 @@ class TutorController extends Controller
     public function cadastro_tutor(){
         $materias = Materia::all();
         $professores = Professor::all();
+        Gate::authorize('opcoes-etep');
         return view('cadastro-tutor', compact('materias','professores'));
     }
 

@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Materia;
+use Illuminate\Support\Facades\Gate;
 
 class MateriaController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
     
     public function index(){
         $materias = Materia::all();
+        Gate::authorize('opcoes-etep');
         return view('materias',['materias' => $materias]);
     }
 
@@ -27,6 +32,7 @@ class MateriaController extends Controller
 
     public function editar_materia($id){
         $materia = Materia::findOrFail($id);
+        Gate::authorize('opcoes-etep');
         return view('editar-materia',['materia' => $materia]);
     }
 

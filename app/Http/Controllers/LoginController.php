@@ -17,9 +17,9 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
         
-        if(Auth::attempt($credenciais)){
+        if(Auth::attempt($credenciais, $request->remember)){
             $request->session()->regenerate();
-            return redirect()->intended('/perfil-etep');
+            return redirect()->intended('/');
         } else {
             return redirect('/login')->with('erro','Usuário ou senha inválida');
         }
