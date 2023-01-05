@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 use App\Models\Tutor;
 use App\Models\Materia;
+use App\Models\Horario;
 
 class Controller extends BaseController
 {
@@ -17,7 +18,7 @@ class Controller extends BaseController
     public function index() {
         $tutores = Tutor::all();
         $materias = Materia::all();
-        return view('home',compact('tutores','materias'));
+        $horarios = Horario::all();
+        return view('home',compact('tutores','materias','horarios'));
     }
-    
 }

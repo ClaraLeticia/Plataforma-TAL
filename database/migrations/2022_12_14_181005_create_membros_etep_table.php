@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('matricula_membro',20)->primary();
             $table->string('nome',50);
             $table->string('email',50);
-            $table->string('senha',20);
+            $table->string('senha');
             $table->timestamps();
         });
     }

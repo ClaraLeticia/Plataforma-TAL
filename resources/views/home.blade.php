@@ -19,11 +19,11 @@
                             <img class="icon-profile-card" src="{{asset('/img/person-circle-outline.svg')}}" alt="icone pessoa">
                             <h6 class="mt-2">{{$tutor->nome}}</h5><br>
                         </div>
-                        <p><strong>Email:</strong> {{$tutor->email}}</p>
-                        <p><strong>Telefone:</strong> {{$tutor->telefone}}</p>
+                        <p class="ms-1"><strong>Email:</strong><br>{{$tutor->email}}</p>
+                        <p class="ms-1"><strong>Telefone:</strong> {{$tutor->telefone}}</p>
                     </div>
                     <div class="col-sm-7 border border-dark">
-                        <table class="table text-center">
+                        <table class="table text-center table-tutores-home">
                             <tr>
                                 <th></th>
                                 <th>Entrada</th>
@@ -31,28 +31,88 @@
                             </tr>
                             <tr>
                                 <th>Segunda-feira</th>
-                                <td>13h</td>
-                                <td>18h</td>
+                                <td>
+                                @foreach($horarios as $horario)
+                                    @if($horario->id_tutor == $tutor->matricula_aluno && $horario->dia == 'Segunda-feira')
+                                        {{date('H:i', strtotime($horario->horario_entrada))}}
+                                    @endif
+                                    @endforeach
+                                </td>
+                                <td>
+                                @foreach($horarios as $horario)
+                                    @if($horario->id_tutor == $tutor->matricula_aluno && $horario->dia == 'Segunda-feira')
+                                        {{date('H:i', strtotime($horario->horario_saida))}}
+                                    @endif
+                                    @endforeach
+                                </td>
                             </tr>
                             <tr>
                                 <th>Terça-feira</th>
-                                <td>13h</td>
-                                <td>18h</td>
+                                <td>
+                                @foreach($horarios as $horario)
+                                    @if($horario->id_tutor == $tutor->matricula_aluno && $horario->dia == 'Terça-feira')
+                                        {{date('H:i', strtotime($horario->horario_entrada))}}
+                                    @endif
+                                    @endforeach
+                                </td>
+                                <td>
+                                @foreach($horarios as $horario)
+                                    @if($horario->id_tutor == $tutor->matricula_aluno && $horario->dia == 'Terça-feira')
+                                        {{date('H:i', strtotime($horario->horario_saida))}}
+                                    @endif
+                                    @endforeach
+                                </td>
                             </tr>
                             <tr>
                                 <th>Quarta-feira</th>
-                                <td>13h</td>
-                                <td>18h</td>
+                                <td>
+                                @foreach($horarios as $horario)
+                                    @if($horario->id_tutor == $tutor->matricula_aluno && $horario->dia == 'Quarta-feira')
+                                        {{date('H:i', strtotime($horario->horario_entrada))}}
+                                    @endif
+                                    @endforeach
+                                </td>
+                                <td>
+                                @foreach($horarios as $horario)
+                                    @if($horario->id_tutor == $tutor->matricula_aluno && $horario->dia == 'Quarta-feira')
+                                        {{date('H:i', strtotime($horario->horario_saida))}}
+                                    @endif
+                                    @endforeach
+                                </td>
                             </tr>
                             <tr>
                                 <th>Quinta-feira</th>
-                                <td>13h</td>
-                                <td>18h</td>
+                                <td>
+                                @foreach($horarios as $horario)
+                                    @if($horario->id_tutor == $tutor->matricula_aluno && $horario->dia == 'Quinta-feira')
+                                        {{date('H:i', strtotime($horario->horario_entrada))}}
+                                    @endif
+                                    @endforeach
+                                </td>
+                                <td>
+                                @foreach($horarios as $horario)
+                                    @if($horario->id_tutor == $tutor->matricula_aluno && $horario->dia == 'Quinta-feira')
+                                        {{date('H:i', strtotime($horario->horario_saida))}}
+                                    @endif
+                                    @endforeach
+                                </td>
                             </tr>
                             <tr>
                                 <th>Sexta-feira</th>
-                                <td>13h</td>
-                                <td>18h</td>
+                                <td>
+                                @foreach($horarios as $horario)
+                                    @if($horario->id_tutor == $tutor->matricula_aluno && $horario->dia == 'Sexta-feira')
+                                        {{date('H:i', strtotime($horario->horario_entrada))}}
+                                    @endif
+                                    @endforeach
+                                </td>
+                                <td>
+                                @foreach($horarios as $horario)
+                                    @if($horario->id_tutor == $tutor->matricula_aluno && $horario->dia == 'Sexta-feira')
+                                        {{date('H:i', strtotime($horario->horario_saida))}}
+                                    @endif
+                                    @endforeach
+                                </td>
                             </tr>
                         </table>
                     </div>  

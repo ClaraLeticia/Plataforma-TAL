@@ -19,8 +19,11 @@ class TutorController extends Controller
 
     public function visualizar_tutor() {
         $tutores = Tutor::all();
+        $materias = Materia::all();
+        $professores = Professor::all();
+        $horarios = Horario::all();
         Gate::authorize('opcoes-etep');
-        return view('visualizar-tutor',['tutores' => $tutores]);
+        return view('visualizar-tutor',compact('tutores','materias','professores','horarios'));
     }
 
     public function perfil_tutor() {
@@ -48,7 +51,7 @@ class TutorController extends Controller
         $tutor->id_professor_orientador = $request->id_professor_orientador;
         $tutor->edital = $request->edital;
         $tutor->semestre = $request->semestre;
-        $tutor->senha = $request->senha;
+        $tutor['senha'] = bcrypt($request->senha);
         $tutor->save();
 
         $usuario = new User;
@@ -58,42 +61,47 @@ class TutorController extends Controller
         $usuario->id_user = 2;
         $usuario['password'] = bcrypt($request->senha);
         $usuario->save();
-
+        
+        if($request->dia_segunda != null){
         $horario_segunda = new Horario;
         $horario_segunda->id_tutor = $request->matricula_aluno;
         $horario_segunda->dia = $request->dia_segunda;
         $horario_segunda->horario_entrada = $request->horario_entrada_segunda;
         $horario_segunda->horario_saida = $request->horario_saida_segunda;
         $horario_segunda->save();
-
+        }
+        if($request->dia_terca != null){
         $horario_terca = new Horario;
         $horario_terca->id_tutor = $request->matricula_aluno;
         $horario_terca->dia = $request->dia_terca;
         $horario_terca->horario_entrada = $request->horario_entrada_terca;
         $horario_terca->horario_saida = $request->horario_saida_terca;
         $horario_terca->save();
-
+        }
+        if($request->dia_quarta != null){
         $horario_quarta = new Horario;
         $horario_quarta->id_tutor = $request->matricula_aluno;
         $horario_quarta->dia = $request->dia_quarta;
         $horario_quarta->horario_entrada = $request->horario_entrada_quarta;
         $horario_quarta->horario_saida = $request->horario_saida_quarta;
         $horario_quarta->save();
-
+        }
+        if($request->dia_quinta != null){
         $horario_quinta = new Horario;
         $horario_quinta->id_tutor = $request->matricula_aluno;
         $horario_quinta->dia = $request->dia_quinta;
         $horario_quinta->horario_entrada = $request->horario_entrada_quinta;
         $horario_quinta->horario_saida = $request->horario_saida_quinta;
         $horario_quinta->save();
-
+        }
+        if($request->dia_sexta != null){
         $horario_sexta = new Horario;
         $horario_sexta->id_tutor = $request->matricula_aluno;
         $horario_sexta->dia = $request->dia_sexta;
         $horario_sexta->horario_entrada = $request->horario_entrada_sexta;
         $horario_sexta->horario_saida = $request->horario_saida_sexta;
         $horario_sexta->save();
-
+        }
         return redirect('/perfil-etep/visualizar-tutor');   
         
     }

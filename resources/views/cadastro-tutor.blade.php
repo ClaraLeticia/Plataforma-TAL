@@ -23,21 +23,21 @@
             <div class="row g-2">
                 <div class="col-md-9">
                     <label for="nome">Nome Completo</label><br>
-                    <input class="form-control" type="text" name="nome" id="" placeholder="Nome Completo" required>
+                    <input class="form-control" type="text" name="nome" placeholder="Nome Completo" required>
                 </div>
                 <div class="col-md-3">
                     <label for="matricula">Matrícula</label><br>
-                    <input class="form-control" type="text" name="matricula_aluno" id="" placeholder="Matrícula" required>
+                    <input class="form-control" type="text" name="matricula_aluno" placeholder="Matrícula" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <label for="email">E-mail</label><br>
-                    <input class="form-control" type="email" name="email" id="" placeholder="email@email.com" required>
+                    <input class="form-control" type="email" name="email" placeholder="email@email.com" required>
                 </div>
                 <div class="col-md-6">
                     <label for="telefone">Número de Telefone</label><br>
-                    <input class="form-control" type="text" name="telefone" id="" placeholder="(xx) xxxxx-xxxx" required>
+                    <input class="form-control" type="text" name="telefone" placeholder="(xx) xxxxx-xxxx" required>
                 </div>
             </div>
             <div class="row">
@@ -63,11 +63,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="edital">Edital</label><br>
-                    <input class="form-control" type="text" name="edital" id="" placeholder="Edital" required>
+                    <input class="form-control" type="text" name="edital" placeholder="Edital" required>
                 </div>
                 <div class="col-md-6">
                     <label for="semestre">Semestre</label><br>
-                    <input class="form-control" type="text" name="semestre" id="" placeholder="Semestre" required>
+                    <input class="form-control" type="text" name="semestre" placeholder="Semestre" required>
                 </div>
             </div>
             <div class="row">
@@ -90,72 +90,72 @@
                 <form action="/cadastrar-tutor" method="POST" id="form-tutor-horario">
                     <div class="row g-3 align-items-center">
                         <div class="col-sm-2">
-                            <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" name="dia_segunda" value="Segunda-feira">
+                            <input type="checkbox" class="btn-check dia" id="btn-check-outlined" name="dia_segunda" value="Segunda-feira" onclick="HABILITAR_HORARIOS_SEGUNDA(this)">
                             <label class="btn btn-outline-success" for="btn-check-outlined">Segunda-feira</label><br>
                         </div>
                         <div class="col-sm-2">
                             <label for="horario_entrada_segunda">Hora de Entrada:</label>
-                            <input class="form-control" type="time" name="horario_entrada_segunda" id="" value="null">
+                            <input class="form-control horario_segunda" type="time" name="horario_entrada_segunda" disabled required>
                         </div>
                         <div class="col-sm-2">
                             <label for="horario_saida_segunda">Hora de Saída:</label>
-                            <input class="form-control" type="time" name="horario_saida_segunda" id="" value="null">
+                            <input class="form-control horario_segunda" type="time" name="horario_saida_segunda" disabled required>
                         </div>
                     </div><hr>
                     <div class="row g-3 align-items-center">
                         <div class="col-sm-2">
-                            <input type="checkbox" class="btn-check" id="btn-check-outlined-2" autocomplete="off" name="dia_terca" value="Terça-feira">
+                            <input type="checkbox" class="btn-check dia" id="btn-check-outlined-2" name="dia_terca" value="Terça-feira" onclick="HABILITAR_HORARIOS_TERCA(this)">
                             <label class="btn btn-outline-success" for="btn-check-outlined-2">Terça-feira</label><br>
                         </div>
                         <div class="col-sm-2">
                             <label for="horario_entrada_terca">Hora de Entrada:</label>
-                            <input class="form-control" type="time" name="horario_entrada_terca" id="">
+                            <input class="form-control horario_terca" type="time" name="horario_entrada_terca" disabled required>
                         </div>
                         <div class="col-sm-2">
                             <label for="horario_saida_terca">Hora de Saída:</label>
-                            <input class="form-control" type="time" name="horario_saida_terca" id="">
+                            <input class="form-control horario_terca" type="time" name="horario_saida_terca" disabled required>
                         </div>
                     </div><hr>
                     <div class="row g-3 align-items-center">
                         <div class="col-sm-2">
-                            <input type="checkbox" class="btn-check" id="btn-check-outlined-3" autocomplete="off" name="dia_quarta" value="Quarta-feira">
+                            <input type="checkbox" class="btn-check dia" id="btn-check-outlined-3" name="dia_quarta" value="Quarta-feira" onclick="HABILITAR_HORARIOS_QUARTA(this)">
                             <label class="btn btn-outline-success" for="btn-check-outlined-3">Quarta-feira</label><br>
                         </div>
                         <div class="col-sm-2">
                             <label for="horario_entrada_quarta">Hora de Entrada:</label>
-                            <input class="form-control" type="time" name="horario_entrada_quarta" id="">
+                            <input class="form-control horario_quarta" type="time" name="horario_entrada_quarta" disabled required>
                         </div>
                         <div class="col-sm-2">
                             <label for="horario_saida_quarta">Hora de Saída:</label>
-                            <input class="form-control" type="time" name="horario_saida_quarta" id="">
+                            <input class="form-control horario_quarta" type="time" name="horario_saida_quarta" disabled required>
                         </div>
                     </div><hr>
                     <div class="row g-3 align-items-center">
                         <div class="col-sm-2">
-                            <input type="checkbox" class="btn-check" id="btn-check-outlined-4" autocomplete="off" name="dia_quinta" value="Quinta-feira">
+                            <input type="checkbox" class="btn-check dia" id="btn-check-outlined-4" name="dia_quinta" value="Quinta-feira" onclick="HABILITAR_HORARIOS_QUINTA(this)">
                             <label class="btn btn-outline-success" for="btn-check-outlined-4">Quinta-feira</label><br>
                         </div>
                         <div class="col-sm-2">
                             <label for="horario_entrada_quinta">Hora de Entrada:</label>
-                            <input class="form-control" type="time" name="horario_entrada_quinta" id="">
+                            <input class="form-control horario_quinta" type="time" name="horario_entrada_quinta" disabled required>
                         </div>
                         <div class="col-sm-2">
                             <label for="horario_saida_quinta">Hora de Saída:</label>
-                            <input class="form-control" type="time" name="horario_saida_quinta" id="">
+                            <input class="form-control horario_quinta" type="time" name="horario_saida_quinta" disabled required>
                         </div>
                     </div><hr>
                     <div class="row g-3 align-items-center">
                         <div class="col-sm-2">
-                            <input type="checkbox" class="btn-check" id="btn-check-outlined-5" autocomplete="off" name="dia_sexta" value="Sexta-feira">
+                            <input type="checkbox" class="btn-check dia" id="btn-check-outlined-5" name="dia_sexta" value="Sexta-feira" onclick="HABILITAR_HORARIOS_SEXTA(this)">
                             <label class="btn btn-outline-success" for="btn-check-outlined-5">Sexta-feira</label><br>
                         </div>
                         <div class="col-sm-2">
                             <label for="horario_entrada_sexta">Hora de Entrada:</label>
-                            <input class="form-control" type="time" name="horario_entrada_sexta" id="">
+                            <input class="form-control horario_sexta" type="time" name="horario_entrada_sexta" disabled required>
                         </div>
                         <div class="col-sm-2">
                             <label for="horario_saida_sexta">Hora de Saída:</label>
-                            <input class="form-control" type="time" name="horario_saida_sexta" id="">
+                            <input class="form-control horario_sexta" type="time" name="horario_saida_sexta" disabled required>
                         </div>
                     </div>
                 </form>

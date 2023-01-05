@@ -40,7 +40,7 @@ class MembroEtepController extends Controller
         $membro_etep->matricula_membro = $request->matricula_membro;
         $membro_etep->nome = $request->nome;
         $membro_etep->email = $request->email;
-        $membro_etep->senha = $request->senha;
+        $membro_etep['senha'] = bcrypt($request->senha);
         $membro_etep->save();
 
         $usuario = new User;

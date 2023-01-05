@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreign('id_professor_orientador')->references('id')->on('professores');
             $table->string('edital',10);
             $table->string('semestre',10);
-            $table->string('senha',20);
+            $table->string('senha');
             $table->timestamps();
         });
     }

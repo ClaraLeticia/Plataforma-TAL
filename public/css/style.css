@@ -18,6 +18,7 @@ body{
 main{
     flex-grow: 1;
 }
+/* CONFIGURAÇÃO DE CORES */
 .btn-success {
     --bs-btn-color: #fff;
     --bs-btn-bg: var(--verde-escuro) !important;
@@ -34,9 +35,7 @@ main{
     --bs-btn-disabled-bg: #198754;
     --bs-btn-disabled-border-color: #198754;
 }
-.bg-success{
-    background-color: var(--verde-escuro) !important ;
-}
+/* PAGINA INICIAL */
 .nav-link:focus, .nav-link:hover {
     color: var(--verde-escuro) !important;
 }
@@ -53,9 +52,6 @@ main{
     width: 100%;
     background-color: var(--verde-claro);
 }
-td, th{
-    padding: 10px;
-}
 .card-margin{
     margin-bottom: 100px;
 }
@@ -68,6 +64,15 @@ td, th{
 }
 .visualizar-card{
     margin-bottom: 20px;
+}
+
+/* PAGINA PARA A ETEP VISUALIZAR OS TUTORES */
+.table-green{
+    color: var(--branco);
+    background-color: var(--verde-escuro);
+}
+.table-tutores td, th{
+   padding: 10px !important;
 }
 .card-tutor-grande{
     display: none !important;
