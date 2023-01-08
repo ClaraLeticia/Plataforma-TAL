@@ -16,143 +16,98 @@
 </head>
 <body style="background-color: #ddd;">
     <div class="container">
-        <h1>Editar tutores</h1>
-        <form action="/tutor" method="POST" id="form-tutor-horario" class="p-3">
+        <h1>Editar tutor {{$tutor->nome}}</h1>
+        <form action="/editar-tutor/{{$tutor->matricula_aluno}}" method="POST" id="form-tutor-horario" class="p-3">
             @csrf
+            @method('PUT')
             <h2>Dados pessoais</h2><br>
             <div class="row g-2">
                 <div class="col-md-9">
                     <label for="nome">Nome Completo</label><br>
-                    <input class="form-control" type="text" name="nome" id="" placeholder="Nome Completo" required>
+                    <input class="form-control" type="text" name="nome" placeholder="Nome Completo" value="{{$tutor->nome}}" required>
                 </div>
                 <div class="col-md-3">
                     <label for="matricula">Matrícula</label><br>
-                    <input class="form-control" type="text" name="matricula_aluno" id="" placeholder="Matrícula" required>
+                    <input class="form-control" type="text" name="matricula_aluno" placeholder="Matrícula" value="{{$tutor->matricula_aluno}}" readonly required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <label for="email">E-mail</label><br>
-                    <input class="form-control" type="email" name="email" id="" placeholder="email@email.com" required>
+                    <input class="form-control" type="email" name="email" placeholder="email@email.com" value="{{$tutor->email}}" required>
                 </div>
                 <div class="col-md-6">
                     <label for="telefone">Número de Telefone</label><br>
-                    <input class="form-control" type="text" name="telefone" id="" placeholder="(xx) xxxxx-xxxx" required>
+                    <input class="form-control" type="text" name="telefone" placeholder="(xx) xxxxx-xxxx" value="{{$tutor->telefone}}" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-8">
                     <label for="materia">Matéria</label>
-                    <input type="text" name="materia" id="" class="form-control" placeholder="Matéria">
+                    <select class="form-select" name="id_materia">
+                        <option value="{{$tutor->id_materia}}">
+                        @foreach($materias as $materia)
+                            @if($tutor->id_materia == $materia->id)
+                                {{$materia->materia}}  
+                            @endif
+                        @endforeach
+                        </option>
+                        @foreach($materias as $materia)
+                            @if($tutor->id_materia != $materia->id)
+                                <option value="{{$materia->id}}">{{$materia->materia}}</option>
+                            @endif
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <label for="professor_orientador">Professor Orientador</label><br>
-                    <input class="form-control" type="text" name="professor_orientador" id="" placeholder="Professor Orientador">
+                    <select class="form-select" name="id_professor_orientador">
+                    <option value="{{$tutor->id_materia}}">
+                        @foreach($professores as $professor)
+                            @if($tutor->id_professor_orientador == $professor->id)
+                                {{$professor->nome}}  
+                            @endif
+                        @endforeach
+                        </option>
+                        @foreach($professores as $professor)
+                            @if($tutor->id_professor_orientador != $professor->id)
+                                <option value="{{$professor->id}}">{{$professor->nome}}</option>
+                            @endif
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <label for="edital">Edital</label><br>
-                    <input class="form-control" type="text" name="edital" id="" placeholder="Edital" required>
+                    <input class="form-control" type="text" name="edital" placeholder="Edital" value="{{$tutor->edital}}" required>
                 </div>
                 <div class="col-md-6">
                     <label for="semestre">Semestre</label><br>
-                    <input class="form-control" type="text" name="semestre" id="" placeholder="Semestre" required>
+                    <input class="form-control" type="text" name="semestre" placeholder="Semestre" value="{{$tutor->semestre}}" required>
                 </div>
+            </div>
+            <div><br>
+                <p class="text-danger">Não é possível editar a senha por motivos de segurança. Informe ao tutor que ele deverá alterar a senha na tela de login clicando em "Esqueci minha senha".</p>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <label for="senha">Senha</label><br>
-                    <input class="form-control" type="password" name="senha" placeholder="Senha" minlength="8" maxlength="20" required> 
+                    <input class="form-control senha" type="password" name="senha" placeholder="Senha criptografada" minlength="8" maxlength="20" value="{{$tutor->senha}}" readonly required> 
                     <div id="passwordHelpBlock" class="form-text">
                         Sua senha deve conter de 8 a 20 caracteres.
                     </div>
                 </div>
                 <div class="col-md-6">
                     <label for="senha">Confirmar senha</label><br>
-                    <input class="form-control" type="password" name="confirmar_senha" placeholder="Confirmar senha" minlength="8" maxlength="20" required>
+                    <input class="form-control senha" type="password" name="confirmar_senha" placeholder="Senha criptografada"  minlength="8" maxlength="20" value="{{$tutor->senha}}" readonly required>
                 </div>
             </div>
 
-            <h2>Horários</h2>
-            <p>Marque os dias da semana selecionados pelo tutor e ao lado seu horário disponível</p><br>
-            
-                <form action="/tutor" method="POST" id="form-tutor-horario">
-                    <div class="row g-3 align-items-center">
-                        <div class="col-sm-2">
-                            <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off" name="dia_segunda" value="Segunda-feira">
-                            <label class="btn btn-outline-success" for="btn-check-outlined">Segunda-feira</label><br>
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="horario_entrada_segunda">Hora de Entrada:</label>
-                            <input class="form-control" type="time" name="horario_entrada_segunda" id="" value="null">
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="horario_saida_segunda">Hora de Saída:</label>
-                            <input class="form-control" type="time" name="horario_saida_segunda" id="" value="null">
-                        </div>
-                    </div><hr>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-sm-2">
-                            <input type="checkbox" class="btn-check" id="btn-check-outlined-2" autocomplete="off" name="dia_terca" value="Terça-feira">
-                            <label class="btn btn-outline-success" for="btn-check-outlined-2">Terça-feira</label><br>
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="horario_entrada_terca">Hora de Entrada:</label>
-                            <input class="form-control" type="time" name="horario_entrada_terca" id="">
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="horario_saida_terca">Hora de Saída:</label>
-                            <input class="form-control" type="time" name="horario_saida_terca" id="">
-                        </div>
-                    </div><hr>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-sm-2">
-                            <input type="checkbox" class="btn-check" id="btn-check-outlined-3" autocomplete="off" name="dia_quarta" value="Quarta-feira">
-                            <label class="btn btn-outline-success" for="btn-check-outlined-3">Quarta-feira</label><br>
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="horario_entrada_quarta">Hora de Entrada:</label>
-                            <input class="form-control" type="time" name="horario_entrada_quarta" id="">
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="horario_saida_quarta">Hora de Saída:</label>
-                            <input class="form-control" type="time" name="horario_saida_quarta" id="">
-                        </div>
-                    </div><hr>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-sm-2">
-                            <input type="checkbox" class="btn-check" id="btn-check-outlined-4" autocomplete="off" name="dia_quinta" value="Quinta-feira">
-                            <label class="btn btn-outline-success" for="btn-check-outlined-4">Quinta-feira</label><br>
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="horario_entrada_quinta">Hora de Entrada:</label>
-                            <input class="form-control" type="time" name="horario_entrada_quinta" id="">
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="horario_saida_quinta">Hora de Saída:</label>
-                            <input class="form-control" type="time" name="horario_saida_quinta" id="">
-                        </div>
-                    </div><hr>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-sm-2">
-                            <input type="checkbox" class="btn-check" id="btn-check-outlined-5" autocomplete="off" name="dia_sexta" value="Sexta-feira">
-                            <label class="btn btn-outline-success" for="btn-check-outlined-5">Sexta-feira</label><br>
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="horario_entrada_sexta">Hora de Entrada:</label>
-                            <input class="form-control" type="time" name="horario_entrada_sexta" id="">
-                        </div>
-                        <div class="col-sm-2">
-                            <label for="horario_saida_sexta">Hora de Saída:</label>
-                            <input class="form-control" type="time" name="horario_saida_sexta" id="">
-                        </div>
-                    </div>
-                </form>
             <div class="d-flex justify-content-between p-3">
-                <a href="/perfil-etep"><input type="button" class="btn btn-success" value="Voltar"></a>
+                <a href="/perfil-etep/visualizar-tutor"><input type="button" class="btn btn-success" value="Voltar"></a>
                 <input form="form-tutor-horario" type="submit" class="btn btn-success" value="Editar">
-            </div><br>
+            </div>
         </form>
     </div>
 </body>

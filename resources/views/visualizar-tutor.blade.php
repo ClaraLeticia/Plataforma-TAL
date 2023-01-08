@@ -6,7 +6,7 @@
     <div class="container-sm d-flex justify-content-center mt-5">
         <div class="row">
             <div class="col">
-                @foreach($tutores as $tutor)
+            @foreach($tutores as $tutor)
                 <div class="card shadow rounded visualizar-card card-tutor-pequeno" style="width: 40rem;">
                     <div class="card-body">
                         <div class="row m-0 mb-3">
@@ -31,10 +31,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center float-end">
+                        <div class="d-flex align-items-center justify-content-between">
                             <button class="btn btn-success ver-mais">Ver mais</button>
-                            <a href="" class="btn btn-success ms-4">Editar</a>
-                            <a href="" class="btn btn-success ms-4">Excluir</a>
+                            <a href="/perfil-etep/editar-tutor/{{$tutor->matricula_aluno}}" class="btn btn-success ms-4">Editar dados pessoais</a>
+                            <a href="/perfil-etep/editar-horario/{{$tutor->matricula_aluno}}" class="btn btn-success ms-4">Editar horários</a>
+                            <form action="/deletar-tutor/{{$tutor->matricula_aluno}}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esse Tutor?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-success ms-4">Excluir</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -169,11 +174,16 @@
                             </table>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center float-end">
+                        <div class="d-flex align-items-center justify-content-between">
                             <button class="btn btn-success ver-menos">Ver menos</button>
-                            <a href="" class="btn btn-success ms-4">Editar</a>
-                            <a href="" class="btn btn-success ms-4">Excluir</a>
-                        </div><br><br>
+                            <a href="/perfil-etep/editar-tutor/{{$tutor->matricula_aluno}}" class="btn btn-success ms-4">Editar dados pessoais</a>
+                            <a href="/perfil-etep/editar-horario/{{$tutor->matricula_aluno}}" class="btn btn-success ms-4">Editar horários</a>
+                            <form action="/deletar-tutor/{{$tutor->matricula_aluno}}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esse Tutor?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-success ms-4">Excluir</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 @endforeach

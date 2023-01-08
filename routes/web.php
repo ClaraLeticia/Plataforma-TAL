@@ -67,11 +67,12 @@ Route::delete('/deletar-recado/{id}', [RecadoController::class,'deletar_recado']
 Route::post('/cadastrar-tutor',[TutorController::class,'cadastrar_tutor']);
 Route::get('/perfil-etep/cadastro-tutor', [TutorController::class,'cadastro_tutor']); //ok
 Route::get('/perfil-etep/visualizar-tutor', [TutorController::class,'visualizar_tutor']); //ok
-Route::get('/perfil-etep/editar-tutor/{matricula_membro}', [TutorController::class,'editar_tutor']);
-Route::put('/editar-tutor/{matricula_membro}', [TutorController::class,'atualizar_tutor']);
-Route::delete('/deletar-tutor/{matricula_membro}', [TutorController::class,'deletar_tutor']);
+Route::get('/perfil-etep/editar-tutor/{matricula_aluno}', [TutorController::class,'editar_tutor']);
+Route::put('/editar-tutor/{matricula_aluno}', [TutorController::class,'atualizar_tutor']);
+Route::delete('/deletar-tutor/{matricula_aluno}', [TutorController::class,'deletar_tutor']);
 
-
+Route::get('/perfil-etep/editar-horario/{matricula_aluno}', [TutorController::class,'editar_horario']);
+Route::post('/editar-horario/{matricula_aluno}', [TutorController::class,'atualizar_horario']);
 
 
 

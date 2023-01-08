@@ -103,3 +103,10 @@ main{
     border-bottom: 1px solid var(--preto);
 }
    
+/* CLASSES PARA O BOTÃO DE EDITAR SENHA */
+.btn-invisivel{
+    display: none !important;
+}
+.btn-visivel{
+    display: block;
+}

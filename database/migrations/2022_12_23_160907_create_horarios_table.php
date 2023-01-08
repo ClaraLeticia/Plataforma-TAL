@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('horarios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('id_tutor',20);
-            $table->foreign('id_tutor')->references('matricula_aluno')->on('tutores');
+            $table->foreign('id_tutor')->references('matricula_aluno')->on('tutores')->onDelete('cascade');
             $table->string('dia',20);
             $table->time('horario_entrada');
             $table->time('horario_saida');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('horarios');
+        Schema::dropIfExists('horarios') ;
     }
 };
