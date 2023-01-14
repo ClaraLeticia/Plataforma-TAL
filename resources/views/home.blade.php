@@ -1,16 +1,24 @@
 @extends('layouts.main')
 
 @section('content')
+<div class="rounded-end border border-dark" id="menu-materia">
+    <h4 class="p-2 m-0">Matérias</h3>
+    <!-- <a class="text-dark text-decoration-none" href="">Visualizar todas</a> -->
+    @foreach($materias as $materia)
+        <a class="text-dark text-decoration-none" href="#{{$materia->materia}}">{{$materia->materia}}</a>
+    @endforeach
+    <br>
+</div>
 
 <div class="container-fluid margin-top">
-    <div class="row">
+    
     @foreach($tutores as $tutor)
         @foreach($materias as $materia)
             @if($tutor->id_materia == $materia->id)
                 <?php $nomemateria = $materia->materia ?>  
             @endif
         @endforeach
-        <div class="col-sm-6 card-margin" id="{{$nomemateria}}">
+        <div class="card-margin" id="{{$nomemateria}}">
             <div class="card-horarios rounded shadow">
                 <h4 class="titulo-materia border border-dark rounded-top m-0 d-flex align-items-center justify-content-center">{{$nomemateria}}</h4>
                 <div class="row m-0">
@@ -120,7 +128,7 @@
             </div>
         </div>
     @endforeach
-    </div>
+    
 </div>
     
 

@@ -27,6 +27,7 @@ class RecadoController extends Controller
         $recado = new Recado;
         // $recado->id_membro_etep = $request->
         date_default_timezone_set('America/Sao_Paulo');
+        $recado->id_membro_etep = auth()->user()->matricula;
         $recado->dia = date('Y-m-d');
         $recado->hora = new DateTime();
         $recado->descricao = $request->descricao;

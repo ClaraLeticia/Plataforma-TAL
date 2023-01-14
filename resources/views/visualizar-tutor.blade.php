@@ -77,8 +77,7 @@
                                     </div>
                                 </div>
                                 <p><strong>E-mail: </strong>{{$tutor->email}}</p>
-                            </div>
-                            <hr>
+                            </div><hr>
                             <div class="container-sm-3 d-flex justify-content-center">
                             <table class="table table-sm border-dark text-center table-tutores">
                                 <tr class="table-green">

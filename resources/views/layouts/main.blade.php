@@ -26,7 +26,12 @@
                     <img class="ms-4 me-2" style="width: 100px;" src="{{asset('/img/person-circle-outline.svg')}}" alt="">
                     @auth
                     <?php $nome = auth()->user()->name; $firstname = explode(" ", $nome);?>
+                    @can('opcoes-etep')
                     <a class="text-decoration-none text-dark p-2 rounded" href="/perfil-etep"><h5 class="m-0">Olá {{$firstname[0]}}</h5></a>
+                    @endcan
+                    @can('opcoes-tutor')
+                    <a class="text-decoration-none text-dark p-2 rounded" href="/perfil-tutor"><h5 class="m-0">Olá {{$firstname[0]}}</h5></a>
+                    @endcan
                     <span class="mx-2" style="font-size: 30px;">|</span>
                     <a class="text-decoration-none text-dark p-2 rounded me-2" href="/logout"><h5 class="m-0">Sair</h5></a>
                     @else
@@ -39,24 +44,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Matérias
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#matematica">Matemática</a></li>
-                            <li><a class="dropdown-item" href="#programacao">Programação</a></li>
-                            <li><a class="dropdown-item" href="#portugues">Português</a></li>
-                            <li><a class="dropdown-item" href="#solos">Solos</a></li>
-                            <li><a class="dropdown-item" href="#fisica">Física</a></li>
-                            <li><a class="dropdown-item" href="#quimica">Químimca</a></li>
-                            <li><a class="dropdown-item" href="#eletricidade">Eletricidade e Eletrônica Analógica e/ou Digital</a></li>
-                            <li><a class="dropdown-item" href="#area">Área Técnica-Irrigação</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     @can('opcoes-tutor')
                     <li class="nav-item dropdown">

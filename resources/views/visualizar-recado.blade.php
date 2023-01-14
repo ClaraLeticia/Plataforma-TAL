@@ -9,7 +9,7 @@
             <div class="col">
             @foreach($recados as $recado)
                 <div class="card shadow rounded visualizar-card card-recado" style="width: 50rem;">
-                    <div class="rounded-top p-3 title d-flex justify-content-between align-items-center bg-success text-light">
+                    <div class="rounded-top p-3 title d-flex justify-content-between align-items-center recado-green text-light">
                         <h4 class="m-0">{{date('d/m/Y', strtotime($recado->dia))}}</h4>
                         @can('opcoes-etep')
                         <div class="d-flex align-items-center">

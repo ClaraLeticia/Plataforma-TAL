@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('tutores', function (Blueprint $table) {
             $table->string('matricula_aluno',20)->primary();
-            $table->string('id_membro_etep',20)->nullable()->default(NULL);
+            $table->string('id_membro_etep',20);
             $table->foreign('id_membro_etep')->references('matricula_membro')->on('membros_etep');
             $table->string('nome',50);
             $table->string('email',50);
             $table->string('telefone',20);
-            $table->integer('id_materia',false,true)->nullable()->default(NULL);
+            $table->integer('id_materia',false,true);
             $table->foreign('id_materia')->references('id')->on('materias');
-            $table->integer('id_professor_orientador',false,true)->nullable()->default(NULL);
+            $table->integer('id_professor_orientador',false,true);
             $table->foreign('id_professor_orientador')->references('id')->on('professores');
             $table->string('edital',10);
             $table->string('semestre',10);

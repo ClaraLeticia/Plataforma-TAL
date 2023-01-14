@@ -29,7 +29,7 @@
         <tr>
             <td>{{$key+1}}</td>
             <td>{{$materia->materia}}</td>
-            <td>
+            <td class="p-2">
             <a href="/perfil-etep/editar-materia/{{$materia->id}}" class="btn btn-success">Editar</a>
             </td>
             <td>

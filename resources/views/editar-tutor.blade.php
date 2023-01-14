@@ -90,7 +90,7 @@
             <div><br>
                 <p class="text-danger">Não é possível editar a senha por motivos de segurança. Informe ao tutor que ele deverá alterar a senha na tela de login clicando em "Esqueci minha senha".</p>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-6">
                     <label for="senha">Senha</label><br>
                     <input class="form-control senha" type="password" name="senha" placeholder="Senha criptografada" minlength="8" maxlength="20" value="{{$tutor->senha}}" readonly required> 
@@ -102,7 +102,7 @@
                     <label for="senha">Confirmar senha</label><br>
                     <input class="form-control senha" type="password" name="confirmar_senha" placeholder="Senha criptografada"  minlength="8" maxlength="20" value="{{$tutor->senha}}" readonly required>
                 </div>
-            </div>
+            </div> -->
 
             <div class="d-flex justify-content-between p-3">
                 <a href="/perfil-etep/visualizar-tutor"><input type="button" class="btn btn-success" value="Voltar"></a>

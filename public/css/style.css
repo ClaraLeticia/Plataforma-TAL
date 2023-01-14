@@ -35,6 +35,9 @@ main{
     --bs-btn-disabled-bg: #198754;
     --bs-btn-disabled-border-color: #198754;
 }
+.recado-green{
+    background-color: var(--verde-escuro) !important;
+}
 /* PAGINA INICIAL */
 .nav-link:focus, .nav-link:hover {
     color: var(--verde-escuro) !important;
@@ -53,17 +56,35 @@ main{
     background-color: var(--verde-claro);
 }
 .card-margin{
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 .margin-top{
     margin-top: 50px;
 }
-
 .icon-profile-card{
     height: 120px;
 }
 .visualizar-card{
     margin-bottom: 20px;
+}
+#menu-materia{
+    width: 300px;
+    background-color: var(--branco);
+    position: fixed;
+    margin-top: 50px;
+    left: 0;
+}
+#menu-materia h4{
+    text-indent: 10px;
+}
+#menu-materia a{
+    padding: 5px;
+    width: 100%;
+    display: block;
+    text-indent: 30px;
+}
+#menu-materia a:hover{
+    background-color: var(--cinza-claro);
 }
 
 /* PAGINA PARA A ETEP VISUALIZAR OS TUTORES */

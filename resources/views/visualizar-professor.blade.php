@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col">
             @foreach($professores as $professor)
-                <div class="card shadow rounded visualizar-card" style="width: 50rem;">
+                <div class="card shadow rounded visualizar-card" style="width: 40rem;">
                     <div class="card-body">
                         <div class="row m-0 mb-3">
                             <div class="col-sm-2 p-0 text-center">

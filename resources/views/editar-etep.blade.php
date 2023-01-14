@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="matricula_membro">Matrícula</label><br>
-                    <input class="form-control" type="text" name="matricula_membro" id="" placeholder="Matrícula" value="{{$membro_etep->matricula_membro}}" required>
+                    <input class="form-control" type="text" name="matricula_membro" id="" placeholder="Matrícula" value="{{$membro_etep->matricula_membro}}" readonly required>
                 </div>
             </div>
             <div class="row">
@@ -37,10 +37,11 @@
                     <input class="form-control" type="email" name="email" id="" placeholder="email@email.com" value="{{$membro_etep->email}}" required>
                 </div>
             </div>
-            <div class="row">
+            <p class="text-danger">Não é permitido alterar a senha do perfil de outro membro da ETEP.</p><br>
+            <!-- <div class="row">
                 <div class="col-md-6">
                     <label for="senha">Senha</label><br>
-                    <input class="form-control" type="password" name="senha" placeholder="Senha" minlength="8" maxlength="20" value="{{$membro_etep->senha}}" required> 
+                    <input class="form-control" type="password" name="senha" placeholder="Senha" minlength="8" maxlength="20" value="{{$membro_etep->senha}}" readonly required> 
                     <div id="passwordHelpBlock" class="form-text">
                         Sua senha deve conter de 8 a 20 caracteres.
                     </div>
@@ -49,9 +50,9 @@
                     <label for="senha">Confirmar senha</label><br>
                     <input class="form-control" type="password" name="" placeholder="Confirmar senha" minlength="8" maxlength="20" value="{{$membro_etep->senha}}" readonly required>
                 </div>
-            </div>
+            </div> -->
             <div class="d-flex justify-content-between">
-                <a href="/perfil-etep"><input type="button" class="btn btn-success" value="Voltar"></a>
+                <a href="/perfil-etep/visualizar-etep"><input type="button" class="btn btn-success" value="Voltar"></a>
                 <input type="submit" class="btn btn-success" value="Editar">
             </div><br>
         </form>

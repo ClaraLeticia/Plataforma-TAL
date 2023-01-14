@@ -16,7 +16,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function index() {
-        $tutores = Tutor::all();
+        $tutores = Tutor::orderBy('id_materia','asc')->get();
         $materias = Materia::all();
         $horarios = Horario::all();
         return view('home',compact('tutores','materias','horarios'));

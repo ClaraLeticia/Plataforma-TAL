@@ -51,7 +51,7 @@
                 </div>
             </div><br>
             <div class="d-flex justify-content-between">
-                <a href="/perfil-etep"><input type="button" class="btn btn-success" value="Voltar"></a>
+                <a href="/perfil-etep/visualizar-professor"><input type="button" class="btn btn-success" value="Voltar"></a>
                 <input type="submit" class="btn btn-success" value="Editar">
             </div>
         </form>

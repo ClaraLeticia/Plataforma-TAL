@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('recados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_membro_etep',20)->nullable()->default(NULL);
+            $table->string('id_membro_etep',20);
             $table->foreign('id_membro_etep')->references('matricula_membro')->on('membros_etep');
             $table->date('dia');
             $table->time('hora');

@@ -57,6 +57,12 @@ class MembroEtepController extends Controller
 
     public function deletar_etep($matricula_membro){
         MembroEtep::findOrFail($matricula_membro)->delete();
+        $user = User::all();
+        foreach ($user as $user) {
+            if($user->matricula == $matricula_membro){
+                User::findOrFail($user->id)->delete();
+            }
+        }
         return redirect('/perfil-etep/visualizar-etep');
     }
 
@@ -68,6 +74,15 @@ class MembroEtepController extends Controller
 
     public function atualizar_etep(Request $request){
         MembroEtep::findOrFail($request->matricula_membro)->update($request->all());
+        $users = User::all();
+        foreach($users as $user ){
+            if($user->matricula == $request->matricula_aluno){
+                User::findOrFail($user->id)->update([
+                'nome' => $request->nome,
+                'email' => $request->email,
+                ]);
+            }
+        }
         return redirect('/perfil-etep/visualizar-etep');
     }
     

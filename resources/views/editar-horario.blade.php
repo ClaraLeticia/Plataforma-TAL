@@ -117,7 +117,7 @@
                 </div>
                 <div class="col"></div>
             </div>
-        </div><br>
+        </div>
             <form action="/editar-horario/{{$tutor->matricula_aluno}}" method="POST" id="form-tutor-horario" class="p-3">
             @csrf
                 <input type="hidden" name="matricula_aluno" value="{{$tutor->matricula_aluno}}">

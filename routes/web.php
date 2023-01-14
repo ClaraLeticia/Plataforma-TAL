@@ -28,6 +28,10 @@ Route::get('/login',[LoginController::class,'login'])->name('login'); //ok
 Route::post('/auth',[LoginController::class,'auth']); //ok
 Route::get('/logout',[LoginController::class,'logout']); //ok
 
+Route::get('/forgot-password',[LoginController::class,'forgotPasswordForm']);
+Route::post('/forgot-password',[LoginController::class,'sendResetLink']);
+Route::get('/forgot-password/reset/{token}',[LoginController::class,'resetPasswordForm'])->name('resetPasswordForm');
+Route::post('/forgot-password/reset',[LoginController::class,'resetPassword']);
 
 
 // ROTAS PARA O PERFIL

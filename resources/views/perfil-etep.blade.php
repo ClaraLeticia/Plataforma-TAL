@@ -12,13 +12,13 @@
                     <img class="icon-profile-card" src="{{asset('/img/person-circle-outline.svg')}}" alt="icone">
                 </div>
                 <div class="col-sm-9">
-                    <h5 class="my-3">Sebastião fellipe Pinto Lopes</h5>
-                    <p><strong>Matrícula: </strong>20191054010006</p> 
-                    <p><strong>E-mail: </strong>s.fellipe@escolar.ifrn.edu.br</p>
+                    <h5 class="my-3">{{auth()->user()->name}}</h5>
+                    <p><strong>Matrícula: </strong>{{auth()->user()->matricula}}</p> 
+                    <p><strong>E-mail: </strong>{{auth()->user()->email}}</p>
                 </div>
             </div>
             <div class="d-flex align-items-center float-end">
-                <a href="" class="btn btn-success ms-4">Editar perfil</a>
+                <a href="/perfil-etep/editar-etep/{{auth()->user()->matricula}}" class="btn btn-success ms-4">Editar</a>
             </div>
         </div>
     </div>
