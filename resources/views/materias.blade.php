@@ -19,7 +19,7 @@
         </div>
     </form>
     <h1>Matérias cadastradas</h1>
-    <table class="mx-auto text-center" id="table-materias">
+    <table class="mx-auto text-center tables">
         <tr>
             <th>#</th>
             <th style="width: 500px;">Matéria</th>

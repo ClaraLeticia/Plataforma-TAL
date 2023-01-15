@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\MembroEtepController;
@@ -21,23 +22,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// ROTAS ABERTAS
+// ROTA ABERTA
 Route::get('/', [Controller::class,'index']); //OK
 
+// ROTAS DE LOGIN
 Route::get('/login',[LoginController::class,'login'])->name('login'); //ok
 Route::post('/auth',[LoginController::class,'auth']); //ok
 Route::get('/logout',[LoginController::class,'logout']); //ok
 
+// ROTAS PARA MUDAR A SENHA DO USUÁRIO QUE ESQUECEU A SENHA 
 Route::get('/forgot-password',[LoginController::class,'forgotPasswordForm']);
 Route::post('/forgot-password',[LoginController::class,'sendResetLink']);
 Route::get('/forgot-password/reset/{token}',[LoginController::class,'resetPasswordForm'])->name('resetPasswordForm');
 Route::post('/forgot-password/reset',[LoginController::class,'resetPassword']);
 
 
-// ROTAS PARA O PERFIL
+// ROTAS PARA O PERFIL DO USUÁRIO
 Route::get('/perfil-etep', [MembroEtepController::class,'perfil_etep']); //ok
 Route::get('/perfil-tutor', [TutorController::class,'perfil_tutor']); //ok
-
 
 //CRUD ETEP
 Route::post('/cadastrar-etep',[MembroEtepController::class,'cadastrar_etep']); //ok
@@ -67,30 +69,40 @@ Route::get('/perfil-etep/editar-recado/{id}', [RecadoController::class,'editar_r
 Route::put('/editar-recado/{id}', [RecadoController::class,'atualizar_recado']); //ok
 Route::delete('/deletar-recado/{id}', [RecadoController::class,'deletar_recado']); //ok
 
-
-Route::post('/cadastrar-tutor',[TutorController::class,'cadastrar_tutor']);
+//CRUD TUTOR
+Route::post('/cadastrar-tutor',[TutorController::class,'cadastrar_tutor']); //ok
 Route::get('/perfil-etep/cadastro-tutor', [TutorController::class,'cadastro_tutor']); //ok
 Route::get('/perfil-etep/visualizar-tutor', [TutorController::class,'visualizar_tutor']); //ok
-Route::get('/perfil-etep/editar-tutor/{matricula_aluno}', [TutorController::class,'editar_tutor']);
-Route::put('/editar-tutor/{matricula_aluno}', [TutorController::class,'atualizar_tutor']);
-Route::delete('/deletar-tutor/{matricula_aluno}', [TutorController::class,'deletar_tutor']);
+Route::get('/perfil-etep/editar-tutor/{matricula_aluno}', [TutorController::class,'editar_tutor']); //ok
+Route::put('/editar-tutor/{matricula_aluno}', [TutorController::class,'atualizar_tutor']); //ok
+Route::delete('/deletar-tutor/{matricula_aluno}', [TutorController::class,'deletar_tutor']); //ok
 
-Route::get('/perfil-etep/editar-horario/{matricula_aluno}', [TutorController::class,'editar_horario']);
-Route::post('/editar-horario/{matricula_aluno}', [TutorController::class,'atualizar_horario']);
+//CRUD HORARIO
+Route::get('/perfil-etep/editar-horario/{matricula_aluno}', [TutorController::class,'editar_horario']); //ok
+Route::post('/editar-horario/{matricula_aluno}', [TutorController::class,'atualizar_horario']); //ok
 
-
-
+//CRUD EXPEDIENTE
+Route::get('/perfil-tutor/expediente',[ExpedienteController::class,'index']);
+Route::get('/perfil-tutor/expediente-pdf',[ExpedienteController::class,'visualizar_expediente']);
+Route::post('/cadastrar-expediente', [ExpedienteController::class,'cadastrar_expediente']); 
+Route::delete('/deletar-expediente/{id}',[ExpedienteController::class,'deletar_expediente']); 
+Route::get('/perfil-tutor/editar-expediente/{id}', [ExpedienteController::class,'editar_expediente']); 
+Route::put('/editar-expediente/{id}', [ExpedienteController::class,'atualizar_expediente']);
 
 // ROTAS RELACIONADAS AO TUTOR
 
-Route::get('/perfil-tutor/folha-frequencia', function(){
-    return view('folha-frequencia');
-});
+
 Route::get('/perfil-tutor/atividades-realizadas', function(){
     return view('atividades-realizadas');
 });
-Route::get('/perfil-tutor/relatorio-atividade', function(){
-    return view('relatorio-atividade');
+Route::get('/perfil-tutor/avaliação', function(){
+    return view('avaliacao');
+});
+Route::get('/perfil-tutor/atividades-realizadas-pdf', function(){
+    return view('atividades-realizadas-pdf');
+});
+Route::get('/perfil-tutor/avaliação-pdf', function(){
+    return view('avaliacao-pdf');
 });
 
 

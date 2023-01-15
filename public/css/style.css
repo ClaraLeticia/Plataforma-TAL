@@ -116,11 +116,11 @@ main{
     text-align: justify;
 }
 
-/* PÁGINA DE MATÉRIAS */
-#table-materias{
+/* TABELAS */
+.tables{
     margin-bottom: 100px;
 }
-#table-materias td, #table-materias th{
+.tables td, .tables th{
     border-bottom: 1px solid var(--preto);
 }
    

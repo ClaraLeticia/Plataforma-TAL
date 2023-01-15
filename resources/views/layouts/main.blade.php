@@ -39,7 +39,7 @@
                     @endauth
             </div>
         </nav>
-        <div class="navbar navbar-expand-lg bg-body border-bottom border-1 border-dark">
+        <div class="navbar navbar-expand-lg bg-body border-bottom border-1 border-dark p-0">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -49,19 +49,19 @@
                     @can('opcoes-tutor')
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-dark me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Opções Tutor
+                            Opções
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/perfil-tutor/folha-frequencia">Registrar Folha de Frequência</a></li>
-                            <li><a class="dropdown-item" href="/perfil-tutor/atividades-realizadas">Registrar Atividades Realizadas</a></li>
-                            <li><a class="dropdown-item" href="/perfil-tutor/relatorio-atividade">Registrar Relatório Mensal</a></li>
+                            <li><a class="dropdown-item" href="/perfil-tutor/expediente">Expediente</a></li>
+                            <li><a class="dropdown-item" href="/perfil-tutor/atividades-realizadas">Atividades Realizadas</a></li>
+                            <li><a class="dropdown-item" href="/perfil-tutor/avaliacao">Relatório Mensal</a></li>
                         </ul>
                     </li>
                     @endcan
                     @can('opcoes-etep')
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Opções ETEP
+                            Opções
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="/perfil-etep/cadastro-recado">Postar Recado</a></li>
