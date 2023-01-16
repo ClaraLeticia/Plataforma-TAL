@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('expedientes', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id',true,true);
             $table->string('id_tutor',20);
             $table->foreign('id_tutor')->references('matricula_aluno')->on('tutores')->onDelete('cascade');
             $table->integer('dia',false,true);

@@ -27,17 +27,17 @@
             </div>
             <div class="col-md-2">
                 <label for="hora_entrada">Hora de Entrada</label>
-                <input class="form-control" type="time" name="hora_entrada" placeholder="Ex.: Janeiro 2023">
+                <input class="form-control" type="time" name="hora_entrada">
             </div>
             <div class="col-md-2">
                 <label for="hora_saida">Hora de Saída</label>
-                <input class="form-control" type="time" name="hora_saida" placeholder="Ex.: Janeiro 2023">
+                <input class="form-control" type="time" name="hora_saida">
             </div>
             <div class="col-md-2">
                 <input class="btn btn-success" type="submit" value="Cadastrar">
             </div>
         </div>
-        <p style="color: #999;">Por favor preencha os dias em ordem.</p>
+        <p style="color: #999;">Por favor preencha todos os campos corretamente.</p>
     </form>
     <h1>Expedientes do mês</h1>
     <table class="mx-auto text-center tables">

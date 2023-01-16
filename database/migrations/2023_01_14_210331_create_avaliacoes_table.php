@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('avaliacoes', function (Blueprint $table) {
             $table->id();
+            $table->string('id_tutor',20);
+            $table->foreign('id_tutor')->references('matricula_aluno')->on('tutores')->onDelete('cascade');
+            $table->text('atendimentos');
+            $table->text('dificuldade_discente');
+            $table->text('dificuldade_tutor');
+            $table->text('sugestoes');
             $table->timestamps();
         });
     }

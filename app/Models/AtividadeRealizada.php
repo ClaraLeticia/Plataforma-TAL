@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class AtividadeRealizada extends Model
 {
-    use HasFactory;
+    protected $table = 'atividades_realizadas';
+    protected $guarded = [];
 }

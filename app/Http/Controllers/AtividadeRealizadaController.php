@@ -3,83 +3,64 @@
 namespace App\Http\Controllers;
 
 use App\Models\AtividadeRealizada;
+use App\Models\Expediente;
+use App\Models\Materia;
+use App\Models\Professor;
+use App\Models\Tutor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AtividadeRealizadaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function __construct() {
+        $this->middleware('auth');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function index(){
+        $atividades = AtividadeRealizada::orderBy('id_expediente','asc')->get();
+        $expedientes = Expediente::all();
+        Gate::authorize('opcoes-tutor');
+        return view('atividades-realizadas',compact('atividades','expedientes'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function visualizar_atividades(){
+        $atividades = AtividadeRealizada::all();
+        $tutor = Tutor::all();
+        $materias = Materia::all();
+        $professores = Professor::all();
+        Gate::authorize('opcoes-tutor');
+        return view('atividades-realizadas-pdf',compact('atividades','tutor','materias','professores'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\AtividadeRealizada  $atividadeRealizada
-     * @return \Illuminate\Http\Response
-     */
-    public function show(AtividadeRealizada $atividadeRealizada)
-    {
-        //
+    public function cadastrar_atividades(Request $request){
+        $atividade = new AtividadeRealizada;
+        $atividade->id_tutor = auth()->user()->matricula;
+        $atividade->id_expediente = $request->id_expediente;
+        $atividade->dia = $request->dia;
+        $atividade->horario = $request->horario;
+        $atividade->discente = $request->discente;
+        $atividade->turma_discente = $request->turma_discente;
+        $atividade->assunto = $request->assunto;
+        $atividade->save();
+        return redirect('/perfil-tutor/atividades-realizadas')->with('success','Atendimento cadastrado!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\AtividadeRealizada  $atividadeRealizada
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AtividadeRealizada $atividadeRealizada)
-    {
-        //
+    public function deletar_atividades($id){
+        AtividadeRealizada::findOrFail($id)->delete();
+        return redirect('/perfil-tutor/atividades-realizadas')->with('success','Atendimento excluído!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AtividadeRealizada  $atividadeRealizada
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, AtividadeRealizada $atividadeRealizada)
-    {
-        //
+    public function editar_atividades($id){
+        $atividades = AtividadeRealizada::findOrFail($id);
+        $expedientes = Expediente::all();
+        Gate::authorize('opcoes-tutor');
+        return view('editar-atividades-realizadas',compact('atividades','expedientes'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\AtividadeRealizada  $atividadeRealizada
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(AtividadeRealizada $atividadeRealizada)
-    {
-        //
+    public function atualizar_atividades(Request $request){
+        AtividadeRealizada::findOrFail($request->id)->update($request->all());
+        return redirect('/perfil-tutor/atividades-realizadas')->with('success','Atendimento editado!');
     }
+
+    
 }
