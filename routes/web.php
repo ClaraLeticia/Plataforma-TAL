@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AtividadeRealizadaController;
+use App\Http\Controllers\AvaliacaoController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\LoginController;
@@ -90,23 +91,20 @@ Route::delete('/deletar-expediente/{id}',[ExpedienteController::class,'deletar_e
 Route::get('/perfil-tutor/editar-expediente/{id}', [ExpedienteController::class,'editar_expediente']); 
 Route::put('/editar-expediente/{id}', [ExpedienteController::class,'atualizar_expediente']);
 
+//CRUD ATIVIDADES REALIZADAS
 Route::get('/perfil-tutor/atividades-realizadas',[AtividadeRealizadaController::class,'index']);
 Route::get('/perfil-tutor/atividades-realizadas-pdf',[AtividadeRealizadaController::class,'visualizar_atividades']);
 Route::post('/cadastrar-atividades-realizadas', [AtividadeRealizadaController::class,'cadastrar_atividades']); 
 Route::delete('/deletar-atividades-realizadas/{id}',[AtividadeRealizadaController::class,'deletar_atividades']); 
 Route::get('/perfil-tutor/editar-atividades-realizadas/{id}', [AtividadeRealizadaController::class,'editar_atividades']); 
 Route::put('/editar-atividades-realizadas/{id}', [AtividadeRealizadaController::class,'atualizar_atividades']);
-// ROTAS RELACIONADAS AO TUTOR
 
-
-Route::get('/perfil-tutor/avaliação', function(){
-    return view('avaliacao');
-});
-Route::get('/perfil-tutor/avaliação-pdf', function(){
-    return view('avaliacao-pdf');
-});
-
-
+Route::get('/perfil-tutor/avaliacao',[AvaliacaoController::class,'index']);
+Route::get('/perfil-tutor/avaliacao-pdf',[AvaliacaoController::class,'visualizar_avaliacao']);
+Route::post('/cadastrar-avaliacao', [AvaliacaoController::class,'cadastrar_avaliacao']); 
+Route::delete('/deletar-avaliacao/{id}',[AvaliacaoController::class,'deletar_avaliacao']); 
+Route::get('/perfil-tutor/editar-avaliacao/{id}', [AvaliacaoController::class,'editar_avaliacao']); 
+Route::put('/editar-avaliacao/{id}', [AvaliacaoController::class,'atualizar_avaliacao']);
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
     Route::get('/dashboard', function () {

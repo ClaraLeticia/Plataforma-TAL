@@ -12,49 +12,63 @@
             <div id="cabecalho">
                 <h6 class="texto">CAMPUS IPANGUAÇU</h6>
                 <h6 class="texto">FOLHA DE FREQUÊNCIA - Bolsas Tal</h6>  
-                <h6 class="texto">MÊS: ----/2022</h6>
+                <h6 class="texto">MÊS: @foreach($expedientes as $expediente)
+                    @if($expediente->id_tutor == auth()->user()->matricula)
+                        {{$expediente->mes}}/{{$expediente->ano}} @break
+                    @endif
+                    @endforeach</h6>
            
             </div>
         </div>
  
         <div id="tabelatutor">
             <table >
+                @foreach($tutor as $tutor)
+                @if(auth()->user()->matricula == $tutor->matricula_aluno)
                 <tr>
-                    <td>Tutor (Bolsista):</td>
-                    <td>Monitoria:</td>
+                    <td>Tutor (Bolsista): {{$tutor->nome}}</td>
+                    <td>Monitoria: @foreach($materias as $materia)
+                            @if($tutor->id_materia == $materia->id)
+                                {{$materia->materia}}  
+                            @endif
+                        @endforeach</td>
                 </tr>
                 <tr>
-                    <td>Professor(a):</td>
-                    <td>Edital:</td>
+                    <td>Professor(a): @foreach($professores as $professor)
+                            @if($tutor->id_professor_orientador == $professor->id)
+                                {{$professor->nome}}  
+                            @endif
+                        @endforeach</td>
+                    <td>Edital: {{$tutor->edital}}</td>
                 </tr>
+                @endif
+                @endforeach
             </table>
         </div>
  
         <div id="expediente">
             <table>
-             <tr>
-                 <td rowspan="2" class="qtd"></td>
-                 <td colspan="4">Expediente</td>
-             </tr>
-             <tr>
-                 <td>DIA/HORÁRIO</td>
-                 <td>ASSINATURA ESTUDANTE</td>
-                 <td>TURMA</td>
-                 <td>ATIVIDADE / ASSUNTO TRABALHADO</td>
-             </tr>
-            
-             <?php
-            for($i = 1; $i <= 15; $i++) {
-                echo "<tr>
-                <td class='qtd'>".$i."</td>
-                <td class='linha'></td>
-                <td class='linha'></td>
-                <td class='linha'></td>
-                <td class='linha'></td>
-            </tr>";
-            }
-            ?>
-            
+                <tr>
+                    <td rowspan="2" class="qtd"></td>
+                    <td colspan="4">Expediente</td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">DIA/HORÁRIO</td>
+                    <td style="width: 200px;">ASSINATURA ESTUDANTE</td>
+                    <td style="width: 100px;">TURMA</td>
+                    <td>ATIVIDADE / ASSUNTO TRABALHADO</td>
+                </tr>
+                @foreach($atividades as $key => $atividade)
+                @if($atividade->id_tutor == auth()->user()->matricula)          
+                <tr>
+                    <td style="width: 50px">{{$key+1}}</td>
+                    <td style="width: 200px;">{{date('d/m', strtotime($atividade->dia))}} - {{date('H:m', strtotime($atividade->horario))}}</td>
+                    <td style="width: 200px;">{{$atividade->discente}}</td>
+                    <td style="width: 100px;">{{$atividade->turma_discente}}</td>
+                    <td >{{$atividade->assunto}}</td>
+                </tr>
+                @endif
+                @endforeach   
             </table>
         </div>
  

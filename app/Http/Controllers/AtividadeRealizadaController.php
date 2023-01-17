@@ -28,8 +28,9 @@ class AtividadeRealizadaController extends Controller
         $tutor = Tutor::all();
         $materias = Materia::all();
         $professores = Professor::all();
+        $expedientes = Expediente::all();
         Gate::authorize('opcoes-tutor');
-        return view('atividades-realizadas-pdf',compact('atividades','tutor','materias','professores'));
+        return view('atividades-realizadas-pdf',compact('atividades','tutor','materias','professores','expedientes'));
     }
 
     public function cadastrar_atividades(Request $request){

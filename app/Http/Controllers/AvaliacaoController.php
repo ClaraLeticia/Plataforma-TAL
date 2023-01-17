@@ -3,83 +3,58 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avaliacao;
+use App\Models\Expediente;
+use App\Models\Materia;
+use App\Models\Tutor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AvaliacaoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
+    public function index(){
+        $avaliacao = Avaliacao::all();
+        $tutores = Tutor::all();
+        Gate::authorize('opcoes-tutor');
+        return view('avaliacao',compact('avaliacao','tutores'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function visualizar_avaliacao(){
+        $avaliacao = Avaliacao::all();
+        $tutor = Tutor::findOrFail(auth()->user()->matricula);
+        $materias = Materia::all();
+        $expedientes = Expediente::all();
+        Gate::authorize('opcoes-tutor');
+        return view('avaliacao-pdf',compact('avaliacao','tutor','materias','expedientes'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function cadastrar_avaliacao(Request $request){
+        $avaliacao = new Avaliacao;
+        $avaliacao->id_tutor = auth()->user()->matricula;
+        $avaliacao->atendimentos = $request->atendimentos;
+        $avaliacao->dificuldade_discente = $request->dificuldade_discente;
+        $avaliacao->dificuldade_tutor = $request->dificuldade_tutor;
+        $avaliacao->sugestoes = $request->sugestoes;
+        $avaliacao->save();
+        return redirect('/perfil-tutor/avaliacao')->with('success','Relatório mensal cadastrado!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Avaliacao  $avaliacao
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Avaliacao $avaliacao)
-    {
-        //
+    public function deletar_avaliacao($id){
+        Avaliacao::findOrFail($id)->delete();
+        return redirect('/perfil-tutor/avaliacao')->with('success','Relatório mensal excluído!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Avaliacao  $avaliacao
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Avaliacao $avaliacao)
-    {
-        //
+    public function editar_avaliacao($id){
+        $avaliacao = Avaliacao::findOrFail($id);
+        Gate::authorize('opcoes-tutor');
+        return view('editar-avaliacao',['avaliacao' => $avaliacao]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Avaliacao  $avaliacao
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Avaliacao $avaliacao)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Avaliacao  $avaliacao
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Avaliacao $avaliacao)
-    {
-        //
+    public function atualizar_avaliacao(Request $request){
+        Avaliacao::findOrFail($request->id)->update($request->all());
+        return redirect('/perfil-tutor/avaliacao')->with('success','Relatório mensal editado!');
     }
 }
